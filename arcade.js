@@ -73,7 +73,7 @@ function sceneWeight(scene,level){
 // Initial sheets stay centered on their owner. Only the enlarged sheet fits to the viewport.
 function previewAnchor(x,y,cardHeight,w,h){
  const width=Math.min(280,w-100),height=Math.min(310,h-170);
- const scale=Math.min(.68*cardHeight/274,.70,(Math.min(x,w-x)-12)/(width*1.08));
+ const scale=Math.min(.68*cardHeight/274,.70,(Math.min(x,w-x)-16)/(width*1.04+height*Math.sin(5*Math.PI/180)));
  const top=y-cardHeight/2+Math.min(64,cardHeight*.24);
  const sheets=[-1,0,1].map(side=>{
   const angle=side*5*Math.PI/180,half=width/2*Math.cos(angle)+height*Math.abs(Math.sin(angle));
@@ -434,4 +434,3 @@ function initArcade(scope,scroller) {
  draw();
 }
 if(typeof document!=='undefined')initArcade(document,window);
-

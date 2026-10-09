@@ -15,7 +15,7 @@ function safeSrc(src){if(!src)return null;try{const u=new URL(src,location.href)
 function projectCover(p){return `<img class="work-cover" src="${safeSrc(p.assets.Image.src)}" alt="${escapeText(p.assets.Image.alt)}" loading="lazy">`;}
 document.querySelector('#project-list').innerHTML=projects.map((p,i)=>`<article class="project reveal" id="${p.id}"><button class="project-visual" data-project="${p.id}" aria-label="View ${escapeText(p.name)}"><div class="project-stage ${p.kind}"><p class="cover-label">SELECTED WORK / 0${i+1}</p>${projectCover(p)}</div></button><div class="project-editorial"><p class="project-index mono">0${i+1} / ${p.category}</p><h3>${p.name}</h3><p>${p.summary}</p><div class="tags">${p.tags.map(t=>`<span>${t}</span>`).join('')}</div><button class="editorial-open" data-project="${p.id}">View project <span aria-hidden="true">↗</span></button></div></article>`).join('');
 function pauseDialogMedia(){dialogBody.querySelectorAll('video').forEach(video=>video.pause());}
-function showDialog(){if(!dialog.open)dialog.showModal();document.body.classList.add('modal-open');}
+function showDialog(){document.querySelectorAll('video').forEach(video=>video.pause());if(!dialog.open)dialog.showModal();document.body.classList.add('modal-open');}
 function openProject(id,startTab='Overview'){
  const p=projects.find(p=>p.id===id);if(!p)return;pauseDialogMedia();
  const tabs=['Overview',...Object.keys(p.assets)];if(!tabs.includes(startTab))startTab='Overview';
