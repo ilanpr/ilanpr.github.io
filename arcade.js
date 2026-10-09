@@ -267,7 +267,7 @@ function initArcade(scope,scroller) {
  video.muted=true;
  function motionPaused(){return reduceMotion.matches||page.classList.contains('paused');}
  function syncMedia(){
-  const blocked=motionPaused()||document.hidden||!sceneVisible;
+  const blocked=motionPaused()||page.classList.contains('modal-open')||document.hidden||!sceneVisible;
   skinSelector.querySelector('.skin-projection').style.animationPlayState=blocked||chapter!==4?'paused':'running';
   if(blocked||chapter!==3)archiveVideo.pause();
   for(const sprite of screenSprites){if(blocked||Number(cabinet.style.opacity)<.01)sprite.animation.pause();else if(sprite.animation.playState!=='running')sprite.animation.play();}
@@ -298,6 +298,7 @@ function initArcade(scope,scroller) {
  function draw(){
   frame=null;
   if(!sceneVisible||document.hidden)return;
+  if(page.classList.contains('modal-open'))return;
   // Read geometry before any writes; pointer easing reuses the scene composition.
   if(layoutDirty){const m=metrics();geometry={start:m.start,travel:m.travel,w:stage.clientWidth,h:stage.clientHeight,screenW:screenRoot.clientWidth,screenH:screenRoot.clientHeight};layoutDirty=false;}
   const {w,h,screenW,screenH}=geometry,rect=stage.getBoundingClientRect(),mobile=w<=900,still=motionPaused();
@@ -428,6 +429,7 @@ function initArcade(scope,scroller) {
  const layoutObserver=new ResizeObserver(invalidateLayout);layoutObserver.observe(stage);layoutObserver.observe(journey);
  reduceMotion.addEventListener('change',schedule);
  scope.querySelector('.motion-toggle').addEventListener('click',schedule);
+ new MutationObserver(()=>{syncMedia();schedule();}).observe(page,{attributes:true,attributeFilter:['class']});
  document.addEventListener('visibilitychange',()=>{syncMedia();if(!document.hidden)schedule();});
  video.addEventListener('error',()=>stage.classList.add('video-unavailable'));
  new IntersectionObserver(entries=>{sceneVisible=entries[0].isIntersecting;syncMedia();if(sceneVisible)schedule();},{threshold:.01}).observe(stage);

@@ -37,7 +37,7 @@ function renderTab(type,index=0){
 document.addEventListener('click',e=>{
  const project=e.target.closest('[data-project]');if(project)openProject(project.dataset.project,project.dataset.startTab||'Overview');
  const tab=e.target.closest('[data-tab]');if(tab)renderTab(tab.dataset.tab);
- const thumb=e.target.closest('[data-gallery-index]');if(thumb)renderTab('Image',Number(thumb.dataset.galleryIndex));
+ const thumb=e.target.closest('[data-gallery-index]');if(thumb){const index=Number(thumb.dataset.galleryIndex);renderTab('Image',index);document.querySelector(`[data-gallery-index="${index}"]`).focus({preventScroll:true});}
  const folder=e.target.closest('[data-archive]');if(folder){pauseDialogMedia();const type=folder.dataset.archive;
   dialogBody.innerHTML=`<div class="dialog-header"><p class="mono">THE ARCHIVE</p><h2 id="dialog-title">${folder.querySelector('b').textContent}</h2></div><div class="dialog-content"><div class="archive-list">${type==='GitHub'?codeProjects.map(p=>`<a href="${p.url}" target="_blank" rel="noopener noreferrer"><span><b>${p.name}</b><small>${p.summary}</small></span><span aria-hidden="true">↗</span></a>`).join(''):projects.filter(p=>p.assets[type]).map(p=>`<button data-project="${p.id}" data-start-tab="${type}"><span><b>${p.name}</b><small>${p.category}</small></span><span class="mono">OPEN ↗</span></button>`).join('')}</div></div>`;showDialog();
  }

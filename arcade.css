@@ -911,3 +911,16 @@ footer .pill.yellow:hover,footer .pill.yellow:focus-visible{box-shadow:0 7px 0 #
 @media(max-width:650px){.gallery-thumbs{gap:8px}.gallery-thumbs img{height:60px}.gallery-thumbs span{font-size:10px}.project-stage{padding:12px}.work-cover{max-height:360px}.arcade-preview-layer .preview-caption{font-size:8px}.arcade-preview-layer .preview-notes b,.arcade-preview-layer .preview-toolkit b{font-size:17px}.arcade-preview-layer .preview-notes p,.arcade-preview-layer .preview-toolkit p{font-size:13px}.asset-panel{padding:16px}.contact-links{display:grid}.archive-caption span{line-height:1.45}}
 .arcade-controls .arcade-levels{position:static;inset:auto;margin:0;width:100%;display:flex}
 .arcade-stage{overflow:clip}
+/* Project details share the arcade palette; artwork keeps its original colors. */
+dialog{background:#120b20;color:#f4ecff;border:1px solid #ba83f5;border-radius:3px;box-shadow:0 0 0 3px #251235,0 0 38px #9f4dff33}
+dialog::backdrop{background:#020008bd;backdrop-filter:none}
+.dialog-header{background:linear-gradient(125deg,#29173c,#160e27);border-bottom:1px solid #9671b755}
+.dialog-header .mono{color:#8beaff;font-size:10px;line-height:1.7}
+.dialog-header h2{color:#fff4df;line-height:1.08;text-shadow:0 0 22px #bd8aff20}
+.dialog-close{border-radius:2px;background:#241536;color:#fff;border-color:#a477cc;box-shadow:0 0 12px #b37bfa22}
+.dialog-content>p{color:#dfd3ee;line-height:1.65}.dialog-content .status-note{color:#95e3ee;font:600 12px/1.6 var(--body)}
+.modal-tabs button{border-radius:2px;border-color:#846498;color:#d9c9e8}.modal-tabs button[aria-selected=true]{background:#ffe742;color:#140b1e;border-color:#ffe742;box-shadow:0 0 14px #ffe74226}
+.asset-panel{background:#1b112a;border-radius:2px;border:1px solid #8f65b244}.asset-panel p{color:#dbd0e6;line-height:1.65}.asset-panel a{color:#fff09b}
+.asset-panel .pill,.contact-links .pill{border-radius:2px}.asset-panel .pill.yellow{color:#160d22}.contact-links .pill.dark{background:#281538;border:1px solid #aa77d2;color:#f4e7ff}
+dialog :focus-visible{outline:2px solid #79e9ff;outline-offset:4px}
+body.modal-open main *{animation-play-state:paused!important}
