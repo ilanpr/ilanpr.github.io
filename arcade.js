@@ -38,7 +38,7 @@ const cardPoses = [
  [[-.2,.7,-30,.35,0],[1.2,.55,25,.7,0],[-.2,.9,-20,.35,0],[1.2,.9,25,.35,0]],
  [[-.2,.5,-35,.5,0],[1.2,.5,35,.5,0],[-.2,.8,-35,.5,0],[1.2,.8,35,.5,0]]
 ];
-const mobileCardPoses = [cardPoses[0],[[.28,.435,0,.82,1],[.72,.69,0,.82,1],[.72,.435,0,.82,1],[.28,.69,0,.82,1]],[[-.4,.6,-20,.5,0],[.5,.58,-4,1.2,1],[1.4,.6,20,.5,0],[1.4,.8,20,.5,0]],cardPoses[3],cardPoses[4]];
+const mobileCardPoses = [cardPoses[0],[[.28,.435,0,.82,1],[.72,.69,0,.82,1],[.72,.435,0,.82,1],[.28,.69,0,.82,1]],[[-.4,.6,-20,.5,0],[.78,.71,-4,.7,1],[1.4,.6,20,.5,0],[1.4,.8,20,.5,0]],cardPoses[3],cardPoses[4]];
 // The light follows the visual focus as each world comes into view.
 const spotlightPoses=[[[.5,.39]],[[.5,.51]],[[.72,.49]],[[.7,.51]],[[.71,.43]]];
 const objectPoses = [
@@ -187,7 +187,7 @@ function initArcade(scope,scroller) {
  function cancelPreviewCollapse(){clearTimeout(previewCollapseTimer);previewCollapseTimer=null;}
  function closePreview(){
   cancelPreviewClose();cancelPreviewCollapse();if(!previewCard)return;
-  previewCard=null;expandedSheet=null;previewLayer.hidden=true;stage.classList.remove('preview-open');syncMedia();
+  previewCard.classList.remove('is-preview-owner');previewCard=null;expandedSheet=null;previewLayer.hidden=true;stage.classList.remove('preview-open');syncMedia();
  }
  function previewHasFocus(includeOwner=true){const focused=scope.activeElement||document.activeElement;return ((includeOwner&&previewCard===focused)||previewLayer.contains(focused))&&focused?.matches(':focus-visible');}
  function previewKeepsPointer(){return previewCard&&!previewLayer.hidden&&previewHit(previewPointer,previewCard.getBoundingClientRect(),[...previewLayer.children].map(el=>el.getBoundingClientRect()));}
@@ -208,7 +208,7 @@ function initArcade(scope,scroller) {
  function showPreview(el){
   const project=projects.find(p=>p.id===el.dataset.project);if(!project||el.inert)return;
   cancelPreviewClose();if(previewCard===el&&!previewLayer.hidden)return;
-  cancelPreviewCollapse();expandedSheet=null;previewCard=el;previewLayer.innerHTML=projectPreviews(project);
+  cancelPreviewCollapse();expandedSheet=null;previewCard?.classList.remove('is-preview-owner');previewCard=el;previewCard.classList.add('is-preview-owner');previewLayer.innerHTML=projectPreviews(project);
   previewLayer.hidden=false;stage.classList.add('preview-open');syncMedia();schedule();
  }
  previewLayer.addEventListener('pointerenter',cancelPreviewClose);
@@ -439,3 +439,5 @@ function initArcade(scope,scroller) {
  draw();
 }
 if(typeof document!=='undefined')initArcade(document,window);
+
+

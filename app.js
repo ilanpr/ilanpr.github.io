@@ -59,5 +59,13 @@ document.querySelectorAll('.project-visual').forEach(visual=>{
  });
  visual.addEventListener('pointerleave',()=>look(0,0));
 });
+const workOrbit=document.querySelector('.work-orbit');
+if(workOrbit){
+ let orbitVisible=false;
+ const syncOrbit=()=>{workOrbit.style.animationPlayState=orbitVisible&&!document.hidden?'running':'paused';};
+ new IntersectionObserver(([entry])=>{orbitVisible=entry.isIntersecting;syncOrbit();}).observe(workOrbit);
+ document.addEventListener('visibilitychange',syncOrbit);
+}
 let scheduled=false;function updateScroll(){scheduled=false;const max=document.documentElement.scrollHeight-innerHeight;document.querySelector('.progress').style.width=(max>0?scrollY/max*100:0)+'%';}
 addEventListener('scroll',()=>{if(!scheduled){scheduled=true;requestAnimationFrame(updateScroll);}},{passive:true});updateScroll();document.addEventListener('visibilitychange',()=>document.querySelectorAll('.ticker>div,.motion-demo span,.cartridge-art img,.pixel-particle').forEach(el=>el.style.animationPlayState=document.hidden?'paused':''));
+

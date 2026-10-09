@@ -12,7 +12,7 @@ An arcade-inspired portfolio of visual design, motion projects, and software.
 
 The cabinet name is in `.cabinet-marquee small` in `index.html`. The final cabinet rules in `arcade.css` control its silhouette, joystick, lights and title size. `crt-space` draws the pixel sky; the nine small meteors are created near the start of `initArcade` and use the screen's existing pause behavior.
 
-The three character poses are separate transparent files: `ilan-chibi.webp`, `ilan-chibi-wave.webp`, and `ilan-chibi-laptop.webp`. Move or resize each placement through its own `.scene-mascot` or `.section-mascot` class in `arcade.css`. `archive-list` gives all four collections the same row layout with a category-specific accent color.
+The character poses are separate transparent files: `ilan-chibi.webp`, `ilan-chibi-wave.webp`, `ilan-chibi-laptop.webp`, `ilan-chibi-peek.webp`, and `ilan-chibi-astronaut.webp`. The peeking character uses two layers of the same image so its head sits behind the workbench and its hands grip the edge. Move or resize placements through their classes in `arcade.css`. The astronaut's `.work-orbit` animation pauses off screen, in background tabs, and with the site's motion controls. Collection has no mascot. `archive-list` gives all four collections the same row layout with a category-specific accent color.
 
 Use any static server or editor preview with this folder as the website root. No build or dependencies are required. GitHub Pages serves the `main` branch at its root.
 
