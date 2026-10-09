@@ -924,3 +924,4 @@ dialog::backdrop{background:#020008bd;backdrop-filter:none}
 .asset-panel .pill,.contact-links .pill{border-radius:2px}.asset-panel .pill.yellow{color:#160d22}.contact-links .pill.dark{background:#281538;border:1px solid #aa77d2;color:#f4e7ff}
 dialog :focus-visible{outline:2px solid #79e9ff;outline-offset:4px}
 body.modal-open main *{animation-play-state:paused!important}
+.build-media>img{object-fit:contain;object-position:center top}@media(max-width:900px){.build-media>img{max-width:none}}
