@@ -24,10 +24,10 @@ const playgroundSettings = {
  },
  // x, y, rotation, scale, opacity. These are preferred positions; content clearance wins.
  coverObjects: {
-  gamepad:{desktop:[.105,.17,-15,.62,1],mobile:[.24,.27,-10,.68,1],mobileWideX:.100},
+  gamepad:{desktop:[.105,.17,-15,.62,1],mobile:[.24,.25,-10,.50,1],mobileWideX:.100},
   chip:{desktop:[.9,.65,12,.63,1],mobile:[.77,.58,7,.65,1],mobileWideX:.88},
   folder:{desktop:[.095,.64,-10,.82,1],mobile:[.23,.58,-7,.70,1],mobileWideX:.12},
-  handheld:{desktop:[.895,.17,14,.78,1],mobile:[.78,.27,10,.80,1],mobileWideX:.88}
+  handheld:{desktop:[.895,.17,14,.78,1],mobile:[.78,.25,10,.58,1],mobileWideX:.88}
  }
 };
 // Scene poses: x, y (fractions of the stage), rotation, scale, opacity.
