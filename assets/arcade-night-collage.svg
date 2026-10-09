@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000">
+<defs>
+ <linearGradient id="night" x2="1" y2="1"><stop stop-color="#141338"/><stop offset=".48" stop-color="#13081e"/><stop offset="1" stop-color="#362052"/></linearGradient>
+ <radialGradient id="pink-haze"><stop stop-color="#ed3bba" stop-opacity=".5"/><stop offset="1" stop-color="#ed3bba" stop-opacity="0"/></radialGradient>
+ <radialGradient id="blue-haze"><stop stop-color="#1bd5e6" stop-opacity=".45"/><stop offset="1" stop-color="#1bd5e6" stop-opacity="0"/></radialGradient>
+ <pattern id="fence" width="112" height="112" patternUnits="userSpaceOnUse" patternTransform="rotate(12)"><path d="M0 56 56 0 112 56 56 112Z" fill="none" stroke="#8b64d6" stroke-width="3"/><path d="m0 59 56-56 56 56-56 56Z" fill="none" stroke="#02060e" stroke-width="4"/></pattern>
+ <pattern id="pixels" width="48" height="48" patternUnits="userSpaceOnUse"><rect width="24" height="24" fill="#38a1ff" opacity=".14"/><rect x="24" y="24" width="24" height="24" fill="#fb4ee7" opacity=".12"/></pattern>
+ <g id="bolt"><path d="M54 0H26v34H0v26h27v29h27V60h27V34H54Z" fill="#f4da35" stroke="#190e2c" stroke-width="8"/></g>
+ <g id="ship"><path d="M40 0h20v20h20v20h20v40H70V60H30v20H0V40h20V20h20Z" fill="#3021c3" stroke="#68dcff" stroke-width="5"/><path d="M40 25h20v20H40Z" fill="#fff67d"/></g>
+ <g id="chip"><rect x="12" y="12" width="74" height="74" rx="2" fill="#181335" stroke="#ffe047" stroke-width="7"/><path d="M0 24h14M0 48h14M0 72h14M86 24h14M86 48h14M86 72h14M24 0v14M48 0v14M72 0v14M24 86v14M48 86v14M72 86v14" stroke="#c840ff" stroke-width="7"/><rect x="30" y="30" width="38" height="38" fill="#14358b" stroke="#61e7f1" stroke-width="5"/></g>
+ <g id="pixel-spark"><path d="M24 0h12v18h18v12H36v18H24V30H6V18h18Z" fill="#ffdf43"/><path d="M24 6h6v18H12v6h18v12h6V24h12v-6H30V6Z" fill="#fff4a5"/></g>
+ <g id="pixel-ghost"><path d="M18 0h36v9h9v9h9v45H54v-9h-9v9H27v-9h-9v9H0V18h9V9h9Z" fill="#f76cbf" stroke="#321045" stroke-width="5"/><path d="M14 19h15v21H14Zm29 0h15v21H43Z" fill="#fff6da"/><path d="M21 26h8v14h-8Zm29 0h8v14h-8Z" fill="#221348"/></g>
+</defs>
+<rect width="1600" height="1000" fill="url(#night)"/>
+<ellipse cx="70" cy="460" rx="450" ry="400" fill="url(#pink-haze)"/><ellipse cx="1560" cy="260" rx="410" ry="360" fill="url(#blue-haze)"/>
+<path d="M0 80 760 0 130 660 0 670Z" fill="#2062ff" opacity=".3"/><path d="m980 0 620 0v620L1280 370Z" fill="#c01b98" opacity=".32"/>
+<path d="M0 900 850 550 1600 670v330H0Z" fill="#5325ac" opacity=".3"/>
+<rect width="1600" height="1000" fill="url(#pixels)"/>
+<g transform="translate(-35 90) rotate(-18 160 130)"><rect x="8" y="12" width="280" height="244" fill="#020816"/><rect width="280" height="244" fill="#f9d146" stroke="#612ae1" stroke-width="10"/><rect x="16" y="16" width="248" height="212" fill="none" stroke="#12152f" stroke-width="5"/><use href="#ship" x="90" y="48"/><text x="140" y="204" text-anchor="middle" fill="#18223d" font-family="monospace" font-size="26" font-weight="900">PRESS PLAY</text></g>
+<g transform="translate(1330 60) rotate(22 100 130)"><rect x="8" y="12" width="242" height="238" fill="#030810"/><rect width="242" height="238" fill="#f73fa7" stroke="#6772ff" stroke-width="9"/><use href="#chip" x="68" y="44"/><text x="120" y="200" text-anchor="middle" fill="#221334" font-family="monospace" font-size="29" font-weight="900">BUILD IT</text></g>
+<g transform="translate(1450 420) rotate(-13)"><rect width="210" height="275" fill="#ffce32" stroke="#2e1970" stroke-width="10"/><use href="#bolt" x="62" y="88"/><path d="M16 20h170M16 252h170" stroke="#24305a" stroke-width="6"/></g>
+<g transform="translate(-60 580) rotate(17)"><rect width="246" height="182" fill="#36b5f0" stroke="#31225d" stroke-width="8"/><use href="#chip" x="73" y="38"/></g>
+<g transform="translate(1260 880) rotate(-20)"><rect width="320" height="90" fill="#6e31ef" stroke="#ec69de" stroke-width="8"/><text x="160" y="59" text-anchor="middle" fill="#ffd841" font-family="monospace" font-size="33" font-weight="900">INSERT IDEAS</text></g>
+<g transform="translate(55 910) rotate(-9)"><rect width="370" height="72" fill="#ec469c" stroke="#3444ad" stroke-width="8"/><text x="185" y="48" text-anchor="middle" fill="#0b1234" font-family="monospace" font-size="27" font-weight="900">DESIGN / CODE / REPEAT</text></g>
+<!-- Independently editable game symbols and abstract shapes, kept around the edges. -->
+<g id="left-neon-planet" transform="translate(185 420) rotate(-24)" opacity=".85"><circle r="64" fill="#411b9c" stroke="#f576d2" stroke-width="9"/><path d="M-40-34h44v16h-44ZM9 2h36v16H9ZM-34 27h25v14h-25Z" fill="#8656ec"/><ellipse rx="103" ry="23" fill="none" stroke="#5ce2ff" stroke-width="9"/><path d="M-98 9q94 32 183-1" fill="none" stroke="#fff09a" stroke-width="4"/></g>
+<g id="right-neon-planet" transform="translate(1480 735) rotate(28)" opacity=".8"><circle r="78" fill="#f8b339" stroke="#572fa6" stroke-width="8"/><path d="M-43-40h39v17h-39ZM14-3h44v17H14ZM-22 34h42v16h-42Z" fill="#f17271"/><ellipse rx="117" ry="28" fill="none" stroke="#ff7dd9" stroke-width="12"/><ellipse rx="122" ry="32" fill="none" stroke="#6ee5ff" stroke-width="3"/></g>
+<g id="pixel-symbols" opacity=".84"><use href="#pixel-ghost" transform="translate(275 720) rotate(12) scale(1.1)"/><use href="#ship" transform="translate(1160 75) rotate(-22) scale(.8)"/><use href="#pixel-spark" transform="translate(350 210) rotate(14) scale(.65)"/><use href="#pixel-spark" transform="translate(1220 420) rotate(-16) scale(1.35)"/><use href="#pixel-spark" transform="translate(425 915) rotate(14) scale(.5)"/><use href="#chip" transform="translate(1090 910) rotate(18) scale(.6)"/></g>
+<g id="abstract-shards" fill="none" stroke-width="6" opacity=".7"><path d="m295 65 80 40-54 98-65-80Z" stroke="#ed63cb"/><path d="m1370 335 72 15-24 99-63-55Z" stroke="#7c75ff"/><path d="m38 770 65-33 37 58-60 50Z" stroke="#ffdc59"/><path d="m1150 670 60-55 48 84-93 7Z" stroke="#64eddb"/></g>
+<g id="edge-pixel-trails"><path d="M40 520h40v20h35v20h40M1355 225h35v-20h35v-20h35M1130 805h35v20h35v20h35" fill="none" stroke="#e46fe2" stroke-width="10"/><path d="M55 850h20v-20h20v-20M1380 570h20v20h20v20" fill="none" stroke="#6fe9e3" stroke-width="8"/><g fill="#ffe074"><rect x="280" y="340" width="9" height="9"/><rect x="315" y="370" width="15" height="15"/><rect x="1280" y="565" width="12" height="12"/><rect x="1305" y="598" width="8" height="8"/></g><g fill="#70eaf6"><rect x="355" y="625" width="12" height="12"/><rect x="380" y="654" width="7" height="7"/><rect x="1210" y="285" width="14" height="14"/></g></g>
+<path d="M0 445 380 295M1140 770l460-200M1150 90l-235 120" stroke="#52d4f0" stroke-width="6" opacity=".6"/>
+<rect width="1600" height="1000" fill="url(#fence)" opacity=".58"/>
+<path d="M0 30h1600M0 970h1600" stroke="#983aff" stroke-width="10"/>
+</svg>
