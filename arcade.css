@@ -1018,3 +1018,6 @@ body.modal-open main *{animation-play-state:paused!important}
 }
 .paused .crt-meteors i{animation-play-state:paused!important}
 @media(prefers-reduced-motion:reduce){.crt-meteors{display:none}.section-mascot{transform:none}.archive-list>:is(button,a){transition:none}}
+
+/* Interactive surfaces must appear immediately when decorative motion is paused. */
+body.paused :is(dialog[open],.arcade-preview-layer .cartridge-preview){animation:none!important}
