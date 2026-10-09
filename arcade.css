@@ -972,7 +972,7 @@ body.modal-open main *{animation-play-state:paused!important}
 .design-media-tile img{object-fit:contain;object-position:center bottom}
 .scene-build-board{left:44%;width:44%;border-radius:3px}
 .scene-mascot{position:absolute;z-index:3;width:clamp(100px,11vw,164px);height:auto;object-fit:contain;image-rendering:pixelated;pointer-events:none;display:none;filter:drop-shadow(0 0 10px #80dfff55)}
-.arcade-stage[data-world="1"] .mascot-design{display:block;left:2%;top:25%;width:clamp(72px,7vw,106px)}
+.arcade-stage[data-world="1"] .mascot-design{display:block;left:6%;top:28%;width:clamp(100px,10vw,150px)}
 .arcade-stage[data-world="2"] .mascot-build{display:block;left:16%;bottom:17%}
 .section-mascot{position:absolute;pointer-events:none;image-rendering:pixelated;object-fit:contain;filter:drop-shadow(0 0 10px #a68aff55);width:130px;height:130px}
 .work.section,.archive.section,footer{position:relative}
@@ -985,7 +985,7 @@ body.modal-open main *{animation-play-state:paused!important}
 .folders button:hover .folder-icon,.folders button:focus-visible .folder-icon{color:#180f28;box-shadow:0 0 20px #ab69ea55}
 .archive-list{--collection:#bc8dff;display:grid;gap:14px}
 .archive-list[data-kind="Document"]{--collection:#ffe67b}.archive-list[data-kind="GitHub"]{--collection:#ff91cd}.archive-list[data-kind="Video"]{--collection:#6ce8e6}
-.archive-list>:is(button,a){display:grid;grid-template-columns:44px minmax(0,1fr) 28px;align-items:center;gap:20px;width:100%;text-align:left;padding:22px 24px;color:#fff5ea;background:linear-gradient(110deg,#302046,#171025 78%);border:1px solid color-mix(in srgb,var(--collection) 55%,#382244);border-left:3px solid var(--collection);box-shadow:inset 0 0 25px color-mix(in srgb,var(--collection) 5%,transparent);text-decoration:none;transition:border-color .2s,background .2s}
+.archive-list>:is(button,a){display:grid;grid-template-columns:44px minmax(0,1fr) 28px;align-items:center;gap:20px;width:100%;text-align:left;padding:22px 24px;color:#fff5ea;background:linear-gradient(110deg,#302046,#171025 78%);border:1px solid color-mix(in srgb,var(--collection) 55%,#382244);border-left:3px solid var(--collection);border-radius:4px;box-shadow:inset 0 0 25px color-mix(in srgb,var(--collection) 5%,transparent);text-decoration:none;transition:border-color .2s,background .2s}
 .archive-list>:is(button,a):is(:hover,:focus-visible){border-color:var(--collection);background:linear-gradient(110deg,#422952,#20152d);outline:2px solid var(--collection);outline-offset:3px}
 .archive-row-index{display:grid;place-items:center;aspect-ratio:1;background:color-mix(in srgb,var(--collection) 14%,#171025);color:var(--collection);border:1px solid color-mix(in srgb,var(--collection) 45%,transparent);font:700 13px var(--pixel)}
 .archive-row-copy{min-width:0;display:grid;gap:8px}.archive-row-copy b{font-size:20px;line-height:1.2}.archive-row-copy small{font-size:14px;line-height:1.55;color:#d0c0e0;margin:0;display:block}
@@ -1002,7 +1002,7 @@ body.modal-open main *{animation-play-state:paused!important}
  .arcade-cabinet{height:66%;top:43%}.cabinet-marquee{padding-inline:6%;height:15%;border-radius:9px 9px 3px 3px}
  .cabinet-marquee>span{font-size:11px}.cabinet-marquee small{font-size:9px;max-width:49%;line-height:1.25}
  .cabinet-screen{inset:24% 6% 27%;border-radius:16px;border-width:5px}
- .arcade-stage[data-world="0"] .arcade-title{font-size:clamp(29px,8.5vw,56px)}
+ .arcade-stage[data-world="0"] .arcade-title{font-size:clamp(32px,10vw,64px)}
  .arcade-stage[data-world="0"] .arcade-subtitle{font-size:clamp(17px,4.7vw,25px);max-width:80%;line-height:1.05;margin-top:12px}
  .arcade-stage[data-world="0"] .arcade-start{margin-top:15px;padding:10px 12px}
  .cabinet-control-group{gap:22px;bottom:25%}.cabinet-control-group .cabinet-stick{flex-basis:30px;width:30px;height:10px}
