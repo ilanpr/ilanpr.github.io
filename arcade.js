@@ -15,26 +15,26 @@ const playgroundSettings = {
  // EDIT THE CRT ART HERE: x/y are screen percentages; size is % of screen height.
  // Each src is a separate transparent file. Mobile overrides only the listed values.
  screenSprites: {
-  invader:{src:'assets/screen-invader.webp',x:11,y:18,size:26,rotation:0,float:4,tilt:3,duration:7800,mobile:{x:12,y:14,size:16}},
-  ghost:{src:'assets/screen-ghost.webp',x:10,y:48,size:34,rotation:0,float:5,tilt:4,duration:9200,mobile:{x:12,y:46,size:21}},
-  ship:{src:'assets/screen-ship.webp',x:11,y:77,size:43,rotation:0,float:6,tilt:2,duration:11000,mobile:{x:14,y:83,size:27}},
-  star:{src:'assets/screen-star.webp',x:89,y:18,size:29,rotation:0,float:4,tilt:5,duration:8500,mobile:{x:88,y:14,size:20}},
-  meteor:{src:'assets/screen-meteor.webp',x:90,y:49,size:38,rotation:0,float:6,tilt:3,duration:10400,mobile:{x:87,y:46,size:24}},
-  crystal:{src:'assets/screen-crystal.webp',x:89,y:82,size:23,rotation:0,float:4,tilt:4,duration:9600,mobile:{x:89,y:86,size:17}}
+  invader:{src:'assets/screen-invader.webp',x:10,y:18,size:20,rotation:0,float:4,tilt:3,duration:7800,mobile:{x:12,y:14,size:16}},
+  ghost:{src:'assets/screen-ghost.webp',x:8,y:49,size:27,rotation:0,float:5,tilt:4,duration:9200,mobile:{x:12,y:46,size:21}},
+  ship:{src:'assets/screen-ship.webp',x:17,y:83,size:42,rotation:0,float:6,tilt:2,duration:11000,mobile:{x:14,y:83,size:27}},
+  star:{src:'assets/screen-star.webp',x:89,y:17,size:37,rotation:0,float:4,tilt:5,duration:8500,mobile:{x:88,y:13,size:25}},
+  meteor:{src:'assets/screen-meteor.webp',x:94,y:55,size:30,rotation:0,float:6,tilt:3,duration:10400,mobile:{x:87,y:46,size:24}},
+  crystal:{src:'assets/screen-crystal.webp',x:83,y:86,size:17,rotation:0,float:4,tilt:4,duration:9600,mobile:{x:89,y:86,size:17}}
  },
  // x, y, rotation, scale, opacity. These are preferred positions; content clearance wins.
  coverObjects: {
-  gamepad:{desktop:[.12,.16,-12,.68,1],mobile:[.24,.27,-10,.68,1],mobileWideX:.100},
-  chip:{desktop:[.89,.58,9,.66,1],mobile:[.77,.58,7,.65,1],mobileWideX:.88},
-  folder:{desktop:[.12,.58,-7,.70,1],mobile:[.23,.58,-7,.70,1],mobileWideX:.12},
-  handheld:{desktop:[.88,.16,11,.68,1],mobile:[.78,.27,10,.80,1],mobileWideX:.88}
+  gamepad:{desktop:[.105,.17,-15,.62,1],mobile:[.24,.27,-10,.68,1],mobileWideX:.100},
+  chip:{desktop:[.9,.65,12,.63,1],mobile:[.77,.58,7,.65,1],mobileWideX:.88},
+  folder:{desktop:[.095,.64,-10,.82,1],mobile:[.23,.58,-7,.70,1],mobileWideX:.12},
+  handheld:{desktop:[.895,.17,14,.78,1],mobile:[.78,.27,10,.80,1],mobileWideX:.88}
  }
 };
 // Scene poses: x, y (fractions of the stage), rotation, scale, opacity.
 const cardPoses = [
  [[.22,.9,-35,.25,0],[.4,.95,-15,.25,0],[.6,.95,15,.25,0],[.78,.9,35,.25,0]],
  [[.145,.60,0,.90,1],[.856,.60,0,.90,1],[.382,.60,0,.90,1],[.619,.60,0,.90,1]],
- [[.12,.72,-12,.42,1],[.76,.54,0,1.05,1],[.27,.73,0,.42,1],[.42,.72,12,.42,1]],
+ [[.46,.76,-8,.42,1],[.81,.54,0,1.05,1],[.55,.77,0,.42,1],[.64,.76,8,.42,1]],
  [[-.2,.7,-30,.35,0],[1.2,.55,25,.7,0],[-.2,.9,-20,.35,0],[1.2,.9,25,.35,0]],
  [[-.2,.5,-35,.5,0],[1.2,.5,35,.5,0],[-.2,.8,-35,.5,0],[1.2,.8,35,.5,0]]
 ];
@@ -154,6 +154,8 @@ function initArcade(scope,scroller) {
  const particleRoot=scope.querySelector('.pixel-particles');
  particleRoot.innerHTML=Array.from({length:28},(_,i)=>`<i class="pixel-particle" style="--x:${(i*37+11)%100}%;--size:${i%7===0?5:2+i%2}px;--duration:${21+i%9*3}s;--delay:-${i*3.7}s;--sway:${(i%2?1:-1)*(18+i%5*12)}px;--tint:${['#d0aeff','#65ddef','#ffe479'][i%3]}"></i>`).join('');
  const camera=scope.querySelector('.arcade-camera');
+ const meteorRoot=scope.querySelector('.crt-meteors');
+ meteorRoot.innerHTML=Array.from({length:9},(_,i)=>`<i style="--mx:${(i*29+9)%115}%;--my:${(i*23)%80}%;--ms:${2+i%3}px;--mt:${['#72eaff','#ff87df','#ffd773'][i%3]};--md:${7+i%4*2}s;--delay:-${i*2.3}s"></i>`).join('');
  const cabinet=scope.querySelector('.arcade-cabinet');
  const video=scope.querySelector('.cover-video');
  const archiveVideo=scope.querySelector('.archive-video');
@@ -179,7 +181,7 @@ function initArcade(scope,scroller) {
  changeSkin(1,false);
  const designBoard=scope.querySelector('.scene-design-board'),buildBoard=scope.querySelector('.scene-build-board'),archiveBoard=scope.querySelector('.scene-archive-board');
  function visual(p){return p.assets.Image?`<img src="${safeSrc(p.assets.Image.src)}" alt="${escapeText(p.assets.Image.alt||p.name)}">`:p.cover;}
- designBoard.querySelector('.design-media').innerHTML=projects[0].assets.Image.items.map(item=>`<div class="design-media-tile design"><img src="${safeSrc(item.thumb||item.src)}" alt="" loading="lazy"></div>`).join('');
+ designBoard.querySelector('.design-media').innerHTML=projects[0].assets.Image.items.map(item=>`<div class="design-media-tile design"><img src="${safeSrc(item.src)}" alt="" loading="lazy"></div>`).join('');
  buildBoard.querySelector('.build-media').innerHTML=visual(projects[1]);
  function cancelPreviewClose(){clearTimeout(previewTimer);previewTimer=null;}
  function cancelPreviewCollapse(){clearTimeout(previewCollapseTimer);previewCollapseTimer=null;}
@@ -272,6 +274,7 @@ function initArcade(scope,scroller) {
   if(blocked||chapter!==3)archiveVideo.pause();
   for(const sprite of screenSprites){if(blocked||Number(cabinet.style.opacity)<.01)sprite.animation.pause();else if(sprite.animation.playState!=='running')sprite.animation.play();}
   cabinet.querySelector('.crt-grid').style.animationPlayState=blocked||chapter!==0?'paused':'running';
+  meteorRoot.querySelectorAll('i').forEach(el=>el.style.animationPlayState=blocked||chapter!==0?'paused':'running');
   for(const entry of floats.values())syncFloat(entry,blocked,previewCard);
   for(const animation of backdropAnimations){
    if(blocked||playgroundSettings.background.mode!=='graphic'){if(animation.playState!=='paused')animation.pause();}
