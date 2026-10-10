@@ -933,6 +933,7 @@ body.modal-open main *{animation-play-state:paused!important}
 
 /* Cabinet and collection polish, October 2026. Keep scene geometry in arcade.js. */
 body{overflow-x:clip}
+main{overflow-x:clip}
 .arcade-cabinet{height:76%;max-height:640px;top:43%;background:none;border:0;box-shadow:none;filter:drop-shadow(0 15px 18px #03010c88)}
 .arcade-cabinet::before,.arcade-cabinet::after{inset:0;width:auto;transform:none;z-index:-1;clip-path:polygon(4% 0,96% 0,99% 4%,98% 18%,94% 23%,94% 69%,100% 79%,100% 95%,96% 100%,4% 100%,0 95%,0 79%,6% 69%,6% 23%,2% 18%,1% 4%);box-shadow:none}
 .arcade-cabinet::before{background:linear-gradient(115deg,#d4a2ff,#7650a1 9%,#2d2040 25%,#241532 72%,#42c9e2 91%,#b173e4)}
@@ -1010,6 +1011,7 @@ footer h2{max-width:74%}
  .scene-build-board{left:8%;width:84%}.scene-mascot{display:none!important}
  .design-media{display:none}.scene-design-board{left:8%;right:8%}
  .arcade-cabinet{height:70%;top:43%}.cabinet-screen{inset:24% calc(6% + 18px) 29.5%}
+ .cabinet-lamps{left:27%;right:27%}
  .arcade-stage[data-world="0"] .arcade-title{font-size:clamp(35px,8.6vw,77px)}
  .arcade-stage[data-world="0"] .arcade-headline{top:42.5%}
  .work-orbit{left:46%;width:220px;--orbit-x:25px;--orbit-y:65px}
