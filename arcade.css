@@ -936,14 +936,13 @@ body{overflow-x:clip}
 main{overflow-x:clip}
 .arcade-cabinet{height:76%;max-height:640px;top:43%;background:none;border:0;box-shadow:none;filter:drop-shadow(0 12px 3px #000c) drop-shadow(0 22px 18px #000b)}
 .arcade-cabinet::before,.arcade-cabinet::after{inset:0;width:auto;transform:none;z-index:-1;clip-path:polygon(4% 0,96% 0,99% 4%,98% 18%,94% 23%,94% 69%,100% 79%,100% 95%,96% 100%,4% 100%,0 95%,0 79%,6% 69%,6% 23%,2% 18%,1% 4%);box-shadow:none}
-.arcade-cabinet::before{background:linear-gradient(180deg,transparent 80%,#020106f2 100%),linear-gradient(115deg,#d4a2ff,#7650a1 9%,#2d2040 25%,#241532 72%,#42c9e2 91%,#b173e4)}
+.arcade-cabinet::before{background:linear-gradient(180deg,#020106f2,#020106b3 14%,transparent 30%,transparent 80%,#020106f2 100%),linear-gradient(115deg,#d4a2ff,#7650a1 9%,#2d2040 25%,#241532 72%,#42c9e2 91%,#b173e4)}
 .arcade-cabinet::after{inset:3px 6px 5px;background:url('assets/cabinet-grain.svg'),repeating-linear-gradient(90deg,#ffffff06 0 1px,transparent 1px 4px),linear-gradient(105deg,#32223f,#171220 27%,#251b31 70%,#201a2b);z-index:0}
 .cabinet-marquee{inset:.5% 1% auto;height:17.5%;z-index:2;border:0;border-radius:0;background:none;box-shadow:none;padding-inline:8%;justify-content:center;color:#fff0fc;isolation:isolate}
 .cabinet-marquee::before,.cabinet-marquee::after{content:"";position:absolute;inset:0;z-index:-1;clip-path:polygon(3% 0,97% 0,100% 20%,99% 100%,1% 100%,0 20%)}
-.cabinet-marquee::before{background:linear-gradient(110deg,#d09bed,#8053aa 35%,#6ecde6)}
-.cabinet-marquee::after{inset:1px;background:url('assets/cabinet-grain.svg'),repeating-linear-gradient(0deg,#ffffff05 0 1px,transparent 1px 4px),linear-gradient(130deg,#351745,#161725 60%,#153447)}
-.cabinet-marquee>span{font-size:clamp(13px,1.8vw,24px);text-shadow:0 0 10px #c062ff88}
-.cabinet-marquee-rule{position:absolute;left:20%;right:20%;bottom:18%;height:1px;background:linear-gradient(90deg,transparent,#b98cd9 28%,#69c5df 72%,transparent);box-shadow:0 0 6px #9d77d955}
+.cabinet-marquee::before{background:linear-gradient(110deg,#44334e,#28303b 35%,#374b55)}
+.cabinet-marquee::after{inset:1px;background:url('assets/cabinet-grain.svg'),linear-gradient(180deg,#020104,#07050bc9 55%,#110d1980),repeating-linear-gradient(0deg,#ffffff05 0 1px,transparent 1px 4px),linear-gradient(130deg,#171120,#181524 60%,#192736);box-shadow:inset 0 14px 22px #000b}
+.cabinet-marquee-rule{position:absolute;left:20%;right:20%;bottom:18%;height:1px;background:linear-gradient(90deg,transparent,#4f3f5f 28%,#405560 72%,transparent)}
 .cabinet-lamps{top:20%;height:2%;left:14%;right:14%;z-index:2}
 .cabinet-lamps i{width:clamp(24px,3.6vw,42px);height:clamp(6px,.7vw,9px);border-radius:50%;background:#fff1ff;border:0;box-shadow:0 0 4px 2px #edb7ff,0 0 20px 9px #a645eaae,0 12px 28px 12px #a645ea45}
 /* Reserve a fixed bezel gap as well as the cabinet's six-percent side rail. */
@@ -1009,7 +1008,6 @@ footer h2{max-width:74%}
 .archive-row-copy{min-width:0;display:grid;gap:8px}.archive-row-copy b{font-size:20px;line-height:1.2}.archive-row-copy small{font-size:14px;line-height:1.55;color:#d0c0e0;margin:0;display:block}
 .archive-row-arrow{color:var(--collection);font-size:23px;text-shadow:0 0 10px color-mix(in srgb,var(--collection) 45%,transparent)}
 @media(min-width:901px){
- .cabinet-marquee>span{transform:translateY(-4px)}
  .arcade-stage[data-world="0"] .arcade-headline{top:41.5%}
  .arcade-stage[data-world="0"] .arcade-subtitle{margin-top:-8px;line-height:1.05}
  .arcade-stage[data-world="0"] .arcade-start{margin-top:10px;min-height:36px;padding:6px 12px;font-size:10px;gap:8px;box-shadow:inset 0 2px #fffcd6,0 0 0 2px #190a27,0 4px #7031a8,0 0 24px 5px #ffe74270,0 7px 40px 15px #8d45cf4c}
@@ -1018,7 +1016,6 @@ footer h2{max-width:74%}
 }
 @media(max-width:900px){
  .scene-build-board{left:8%;width:84%}.scene-mascot{display:none!important}
- .cabinet-marquee>span{font-size:clamp(18px,4.8vw,26px);letter-spacing:-.03em}
  .design-media{display:none}.scene-design-board{left:8%;right:8%}
  .arcade-cabinet{height:70%;top:43%}.cabinet-screen{inset:24% calc(6% + 18px) 29.5%}
  .cabinet-lamps{left:27%;right:27%}
