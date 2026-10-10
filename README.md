@@ -10,7 +10,7 @@ An arcade-inspired portfolio of visual design, motion projects, and software.
 - `arcade.css`: arcade colors, typography, glow and responsive layout.
 - `assets/`: individual sprites, original design work and web-optimized videos.
 
-The cabinet's shadowed top panel is `.cabinet-marquee` in `index.html`. The final cabinet rules in `arcade.css` control its silhouette, attached joystick shaft, dark top and underside, material texture, lights and title size. `crt-space` draws the pixel sky; the nine small meteors are created near the start of `initArcade` and use the screen's existing pause behavior.
+The cabinet's unlabelled top panel is `.cabinet-marquee` in `index.html`. The final cabinet rules in `arcade.css` control its silhouette, attached joystick shaft, purple top and dark underside, material texture, lights and title size. `crt-space` draws the pixel sky; the nine small meteors are created near the start of `initArcade` and use the screen's existing pause behavior.
 
 The character poses are separate transparent files: `ilan-chibi.webp`, `ilan-chibi-wave.webp`, `ilan-chibi-laptop.webp`, `ilan-chibi-peek.webp`, and `ilan-chibi-astronaut.webp`. The peeking character uses two layers of the same image so its head sits behind the workbench and its hands grip the edge. Move or resize placements through their classes in `arcade.css`. The astronaut's `.work-orbit` animation pauses off screen, in background tabs, and with the site's motion controls. Collection has no mascot. `archive-list` gives all four collections the same row layout with a category-specific accent color.
 
