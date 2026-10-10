@@ -932,23 +932,26 @@ body.modal-open main *{animation-play-state:paused!important}
 
 
 /* Cabinet and collection polish, October 2026. Keep scene geometry in arcade.js. */
+body{overflow-x:clip}
 .arcade-cabinet{height:76%;max-height:640px;top:43%;background:none;border:0;box-shadow:none;filter:drop-shadow(0 15px 18px #03010c88)}
 .arcade-cabinet::before,.arcade-cabinet::after{inset:0;width:auto;transform:none;z-index:-1;clip-path:polygon(4% 0,96% 0,99% 4%,98% 18%,94% 23%,94% 69%,100% 79%,100% 95%,96% 100%,4% 100%,0 95%,0 79%,6% 69%,6% 23%,2% 18%,1% 4%);box-shadow:none}
 .arcade-cabinet::before{background:linear-gradient(115deg,#d4a2ff,#7650a1 9%,#2d2040 25%,#241532 72%,#42c9e2 91%,#b173e4)}
 .arcade-cabinet::after{inset:3px 6px 5px;background:repeating-linear-gradient(125deg,#fff1 0 2px,transparent 2px 35px),linear-gradient(105deg,#321840,#130d20 27%,#28163f 70%,#201a37);z-index:0}
-.cabinet-marquee{inset:1.8% 1.8% auto;height:16%;z-index:2;border:0;border-radius:0;background:none;box-shadow:none;padding-inline:8%;color:#fff0fc;isolation:isolate}
-.cabinet-marquee::before,.cabinet-marquee::after{content:"";position:absolute;inset:0;z-index:-1;clip-path:polygon(2.5% 0,97.5% 0,100% 25%,99% 100%,1% 100%,0 25%)}
+.cabinet-marquee{inset:.5% 1% auto;height:17.5%;z-index:2;border:0;border-radius:0;background:none;box-shadow:none;padding-inline:8%;color:#fff0fc;isolation:isolate}
+.cabinet-marquee::before,.cabinet-marquee::after{content:"";position:absolute;inset:0;z-index:-1;clip-path:polygon(3% 0,97% 0,100% 20%,99% 100%,1% 100%,0 20%)}
 .cabinet-marquee::before{background:linear-gradient(110deg,#d09bed,#8053aa 35%,#6ecde6)}
 .cabinet-marquee::after{inset:1px;background:radial-gradient(ellipse at 10% 0,#a337c733,transparent 55%),linear-gradient(130deg,#46165f,#141328 55%,#103c54)}
 .cabinet-marquee>span{font-size:clamp(13px,1.8vw,24px);text-shadow:0 0 10px #c062ff88}
+.cabinet-marquee-rule{position:absolute;left:50%;top:22%;bottom:22%;width:1px;transform:skewX(-22deg);background:linear-gradient(transparent,#b98cd9 28%,#69c5df 72%,transparent);box-shadow:0 0 6px #9d77d955}
 .cabinet-marquee small{font:italic 600 clamp(18px,1.65vw,28px)/1.05 'Cormorant Garamond',Georgia,serif;letter-spacing:-.025em;text-transform:none;color:#a8f1ff;max-width:47%;text-align:right;text-shadow:0 0 12px #4bdfff70}
-.cabinet-lamps{top:18%;height:5%;left:12%;right:12%;z-index:2}
-.cabinet-lamps i{width:clamp(22px,3vw,38px);height:clamp(15px,2vw,26px);border-radius:50%;background:repeating-radial-gradient(circle at center,#141125 0 2px,#9371b4 2px 3px,#221936 3px 5px);border:2px solid #ac81d7;box-shadow:0 0 12px #b85bff66,inset 0 0 6px #090416}
-.cabinet-screen{inset:25% 8% 28.5%;border-radius:22px;z-index:2;background-color:#100d2e}
+.cabinet-lamps{top:20%;height:2%;left:14%;right:14%;z-index:2}
+.cabinet-lamps i{width:clamp(24px,3.6vw,42px);height:clamp(6px,.7vw,9px);border-radius:50%;background:#fff1ff;border:0;box-shadow:0 0 4px 2px #edb7ff,0 0 20px 9px #a645eaae,0 12px 28px 12px #a645ea45}
+/* Reserve a fixed bezel gap as well as the cabinet's six-percent side rail. */
+.cabinet-screen{inset:25% calc(6% + 18px) 28.5%;border-radius:22px;z-index:2;background-color:#100d2e}
 .cabinet-screen::after{z-index:3;background:linear-gradient(135deg,#b8e8ff16,transparent 42%);box-shadow:inset 0 0 20px #070818}
 .cabinet-deck{inset:auto 0 13%;height:13%;z-index:4;clip-path:none;background:none;border:0;box-shadow:none;overflow:visible;isolation:isolate}
 .cabinet-deck::before{content:"";position:absolute;inset:0;z-index:-1;clip-path:polygon(6% 0,94% 0,100% 100%,0 100%);background:linear-gradient(180deg,#693c8c,#2c264e 64%,#171225);border-top:2px solid #ca90ef;border-bottom:3px solid #11101e;box-shadow:inset 0 3px #fff2,inset 0 -4px #72438c}
-.cabinet-control-group{bottom:18%;gap:32px}
+.cabinet-control-group{bottom:36%;gap:32px}
 .cabinet-control-group .cabinet-stick{flex-basis:44px;width:44px;height:12px;border-radius:50%;transform:none;border:2px solid #b686db;background:radial-gradient(ellipse,#74628f,#201530 68%);box-shadow:0 3px 0 #100a19,0 0 12px #b754ff44}
 .cabinet-stick::before{left:17px;width:8px;height:30px;bottom:6px;background:linear-gradient(90deg,#6d547b,#f1d5fc 40%,#7b5c93 75%);border-radius:3px;box-shadow:1px 0 #110b20}
 .cabinet-stick::after{left:8px;bottom:30px;width:28px;height:28px;clip-path:none;border-radius:50%;background:radial-gradient(circle at 32% 25%,#ffe5fc 0 8%,#ff8fdd 16%,#e837ae 49%,#7e286f 83%);box-shadow:inset -3px -4px 0 #51195066,0 0 12px #ff73cc88}
@@ -962,7 +965,7 @@ body.modal-open main *{animation-play-state:paused!important}
 .cabinet-base .cabinet-vents{position:absolute;left:12%;top:38%;transform:none;width:16%;height:25%;background:repeating-linear-gradient(0deg,#05030a 0 2px,transparent 2px 5px);font-size:0;text-shadow:none}
 .arcade-stage[data-world="0"] .arcade-headline{top:43%;width:calc(var(--cabinet-width)*.81)}
 .arcade-stage[data-world="0"] .arcade-title{font-size:clamp(48px,7.5vw,105px)}
-.arcade-stage[data-world="0"] .arcade-subtitle{color:#97f4ff!important;text-shadow:0 0 10px #20bddd66,0 2px 0 #07091c;margin-top:14px}
+.arcade-stage[data-world="0"] .arcade-subtitle{color:#97f4ff!important;text-shadow:0 0 10px #20bddd66,0 2px 0 #07091c;margin-top:5px}
 .arcade-stage[data-world="0"] .arcade-start{margin-top:14px;min-height:44px;padding:8px 14px;font-size:11px;gap:12px}
 /* Static stars plus nine compositor-driven meteors; the same pause owner as the CRT. */
 .crt-space{position:absolute;inset:0;overflow:hidden;background:radial-gradient(ellipse at 25% 15%,#743eab47,transparent 48%),radial-gradient(ellipse at 85% 73%,#158fbe3d,transparent 42%);pointer-events:none}
@@ -1006,7 +1009,7 @@ footer h2{max-width:74%}
 @media(max-width:900px){
  .scene-build-board{left:8%;width:84%}.scene-mascot{display:none!important}
  .design-media{display:none}.scene-design-board{left:8%;right:8%}
- .arcade-cabinet{height:70%;top:43%}.cabinet-screen{inset:24% 8% 29.5%}
+ .arcade-cabinet{height:70%;top:43%}.cabinet-screen{inset:24% calc(6% + 18px) 29.5%}
  .arcade-stage[data-world="0"] .arcade-title{font-size:clamp(35px,8.6vw,77px)}
  .arcade-stage[data-world="0"] .arcade-headline{top:42.5%}
  .work-orbit{left:46%;width:220px;--orbit-x:25px;--orbit-y:65px}
@@ -1015,13 +1018,13 @@ footer h2{max-width:74%}
  .contact-mascot{position:relative;display:block;width:min(360px,65%);height:auto;bottom:auto;right:auto;margin:-25px 0 -15px auto}
 }
 @media(max-width:650px){
- .arcade-cabinet{height:66%;top:43%}.cabinet-marquee{padding-inline:7%;height:16%}
+ .arcade-cabinet{height:66%;top:43%}.cabinet-marquee{padding-inline:7%;height:17.5%}
  .cabinet-marquee>span{font-size:11px}.cabinet-marquee small{font-size:16px;max-width:49%;line-height:1.05}
- .cabinet-screen{inset:24% 8% 29.5%;border-radius:16px;border-width:5px}
+ .cabinet-screen{inset:24% calc(6% + 18px) 29.5%;border-radius:16px;border-width:5px}
  .arcade-stage[data-world="0"] .arcade-title{font-size:clamp(32px,10vw,64px)}
- .arcade-stage[data-world="0"] .arcade-subtitle{font-size:clamp(17px,4.7vw,25px);max-width:80%;line-height:1.05;margin-top:12px}
+ .arcade-stage[data-world="0"] .arcade-subtitle{font-size:clamp(17px,4.7vw,25px);max-width:80%;line-height:1.05;margin-top:4px}
  .arcade-stage[data-world="0"] .arcade-start{margin-top:12px;min-height:44px;padding:8px 10px;font-size:10px;gap:9px}
- .cabinet-control-group{gap:22px;bottom:18%}.cabinet-control-group .cabinet-stick{flex-basis:30px;width:30px;height:10px}
+ .cabinet-control-group{gap:22px;bottom:36%}.cabinet-control-group .cabinet-stick{flex-basis:30px;width:30px;height:10px}
  .cabinet-stick::before{left:10px;height:23px;width:6px}.cabinet-stick::after{width:23px;height:23px;left:2px;bottom:22px}
  .cabinet-buttons{gap:9px}.cabinet-buttons i,.cabinet-buttons i:nth-child(2),.cabinet-buttons i:nth-child(3){width:19px;height:14px}
  .cabinet-coin-door{width:35px}.cabinet-base .cabinet-coin-door i{height:12px}
