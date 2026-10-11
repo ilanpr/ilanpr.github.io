@@ -1128,6 +1128,8 @@ button.arcade-start{background-image:var(--pixel-texture),linear-gradient(180deg
 .folders .folder-icon{background-image:var(--pixel-texture);border-radius:0;border:2px solid #ffffff44;box-shadow:inset -3px -3px #0002,inset 2px 2px #fff3}
 .cartridge>.cartridge-face{background-image:var(--pixel-texture),linear-gradient(150deg,var(--card-top),var(--card-bottom))!important;clip-path:var(--pixel-corners)}
 .cartridge:focus-visible{outline:3px solid var(--arcade-yellow);outline-offset:7px}
+/* Keep the start button's existing glow outside its textured, square pixel frame. */
+button.arcade-start{clip-path:none}
 .archive-list>:is(button,a):focus-visible{outline-offset:-5px}
 .project-stage{box-shadow:inset 2px 2px #ffffff18,inset -2px -2px #0005}
 .cabinet-marquee::after{background-image:var(--pixel-texture),url('assets/cabinet-grain.svg'),linear-gradient(130deg,#351745,#161725 60%,#153447)}
