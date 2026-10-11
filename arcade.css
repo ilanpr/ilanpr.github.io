@@ -1114,14 +1114,17 @@ footer h2 i{display:block;font-size:.65em;margin-top:12px}
 .object-sprite{filter:drop-shadow(0 0 4px #fff1feb0) drop-shadow(0 0 22px var(--object-glow,#b465ffb0))}
 .arcade-object:is(.is-hovered,:hover,:focus-visible)>.object-sprite{filter:drop-shadow(0 0 5px #fff5db) drop-shadow(0 0 25px var(--object-glow)) drop-shadow(0 0 48px var(--object-glow)) brightness(1.15)}
 /* Small stepped corners keep the silhouettes readable, including 44px mobile controls. */
-button:not(:is(.arcade-object,.cartridge,.project-visual,.archive-study)),.pill,.arcade-header .hello{background-image:var(--pixel-texture)!important;border-radius:0}
-:is(.pill,.arcade-start,.motion-toggle,.dialog-close,.modal-tabs button,.skin-controls button,.gallery-thumbs button,.contact-links a,.arcade-header .hello){clip-path:var(--pixel-corners)}
-:is(.pill,.arcade-start,.motion-toggle,.dialog-close,.modal-tabs button,.skin-controls button,.gallery-thumbs button,.contact-links a,.arcade-header .hello):focus-visible{outline:3px solid var(--arcade-yellow);outline-offset:-4px}
+button:not(:is(.arcade-object,.cartridge)),.pill,.arcade-header .hello{background-image:var(--pixel-texture)!important;border-radius:0}
+button.arcade-start{background-image:var(--pixel-texture),linear-gradient(180deg,#fff7a0,#ffe742 48%,#f8c526)!important}
+.arcade-levels button[aria-current="step"]{background-color:var(--arcade-yellow)!important}
+.modal-tabs button[aria-selected="true"]{background-color:var(--arcade-yellow)!important;color:var(--content-ink)}
+:is(.pill,.arcade-start,.motion-toggle,.dialog-close,.modal-tabs button,.skin-controls button,.gallery-thumbs button,.contact-links a,.arcade-header .hello,.project-visual,.archive-study){clip-path:var(--pixel-corners)}
+:is(.pill,.arcade-start,.motion-toggle,.dialog-close,.modal-tabs button,.skin-controls button,.gallery-thumbs button,.contact-links a,.arcade-header .hello,.project-visual,.archive-study):focus-visible{outline:3px solid var(--arcade-yellow);outline-offset:-4px}
 .motion-toggle{padding:10px 12px;border:1px solid var(--content-rule);background-color:#191222;min-height:44px}
 .arcade-header .hello{border:1px solid var(--content-rule)}
 :is(.scene-design-board,.scene-build-board,.scene-archive-board,.arcade-levels,.arcade-player-note,.skin-view,.about-paper,.project-stage,.project-window,.asset-panel,.overview-image,.archive-list>a,.archive-list>button,dialog,.dialog-header,.showcase-bar,.window-bar,.archive-caption,.preview-caption,.preview-content.notes,.preview-content.toolkit,.tags span,.skill-labels span,.archive-row-index,.object-label){background-image:var(--pixel-texture);border-radius:0}
 :is(.scene-design-board,.scene-build-board,.scene-archive-board,.arcade-levels,.about-paper,.asset-panel,.archive-list>a,.archive-list>button,dialog){border-width:2px;box-shadow:inset 2px 2px #ffffff12,inset -2px -2px #0005,4px 4px #05030b80}
-:is(.folder-icon,.about-paper,.asset-panel,.archive-list>a,.archive-list>button,.archive-row-index,.tags span,.skill-labels span){clip-path:var(--pixel-corners)}
+:is(.scene-design-board,.scene-build-board,.scene-archive-board,.arcade-levels,.folder-icon,.about-paper,.asset-panel,.archive-list>a,.archive-list>button,.archive-row-index,.tags span,.skill-labels span){clip-path:var(--pixel-corners)}
 .folders .folder-icon{background-image:var(--pixel-texture);border-radius:0;border:2px solid #ffffff44;box-shadow:inset -3px -3px #0002,inset 2px 2px #fff3}
 .cartridge>.cartridge-face{background-image:var(--pixel-texture),linear-gradient(150deg,var(--card-top),var(--card-bottom))!important;clip-path:var(--pixel-corners)}
 .cartridge:focus-visible{outline:3px solid var(--arcade-yellow);outline-offset:7px}
