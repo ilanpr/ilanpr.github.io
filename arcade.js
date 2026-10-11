@@ -15,8 +15,8 @@ const playgroundSettings = {
  // EDIT THE CRT ART HERE: x/y are screen percentages; size is % of screen height.
  // Each src is a separate transparent file. Mobile overrides only the listed values.
  screenSprites: {
-  invader:{src:'assets/screen-invader.webp',x:10,y:18,size:20,rotation:0,float:4,tilt:3,duration:7800,mobile:{x:12,y:14,size:16}},
-  ghost:{src:'assets/screen-ghost.webp',x:8,y:49,size:27,rotation:0,float:5,tilt:4,duration:9200,mobile:{x:12,y:46,size:21}},
+  invader:{src:'assets/screen-invader.webp',x:12,y:11,size:30,rotation:0,float:4,tilt:3,duration:7800,mobile:{x:13,y:12,size:22}},
+  ghost:{src:'assets/screen-ghost.webp',x:8,y:61,size:28,rotation:0,float:5,tilt:4,duration:9200,mobile:{x:12,y:61,size:22}},
   ship:{src:'assets/screen-ship.webp',x:17,y:83,size:42,rotation:0,float:6,tilt:2,duration:11000,mobile:{x:14,y:83,size:27}},
   star:{src:'assets/screen-star.webp',x:89,y:17,size:37,rotation:0,float:4,tilt:5,duration:8500,mobile:{x:88,y:13,size:25}},
   meteor:{src:'assets/screen-meteor.webp',x:94,y:55,size:30,rotation:0,float:6,tilt:3,duration:10400,mobile:{x:87,y:46,size:24}},

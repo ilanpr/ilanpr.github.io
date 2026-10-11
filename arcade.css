@@ -1096,3 +1096,38 @@ footer h2{font-size:clamp(44px,7.5vw,100px);line-height:1.05;max-width:70%}
 footer h2 i{display:block;font-size:.65em;margin-top:12px}
 .footer-bottom a,.arcade-header .hello,.editorial-open{white-space:nowrap}
 @media(max-width:650px){.folders{grid-template-columns:repeat(2,minmax(0,1fr))}.section-title{display:block}.section-title h2{font-size:clamp(36px,10vw,47px)}footer h2{max-width:100%;font-size:clamp(40px,10vw,64px)}footer h2 i{font-size:.7em}.arcade-header nav{font-size:12px}}
+
+/* Pixel arcade finish. Texture belongs to surfaces, never to original project media. */
+:root{--pixel-texture:url('assets/pixel-surface.svg');--pixel-corners:polygon(0 8px,4px 8px,4px 4px,8px 4px,8px 0,calc(100% - 8px) 0,calc(100% - 8px) 4px,calc(100% - 4px) 4px,calc(100% - 4px) 8px,100% 8px,100% calc(100% - 8px),calc(100% - 4px) calc(100% - 8px),calc(100% - 4px) calc(100% - 4px),calc(100% - 8px) calc(100% - 4px),calc(100% - 8px) 100%,8px 100%,8px calc(100% - 4px),4px calc(100% - 4px),4px calc(100% - 8px),0 calc(100% - 8px))}
+.arcade-stage[data-background="graphic"] .motion-backdrop{background:#0b0917;transform:none}
+.arcade-stage[data-background="graphic"] .motion-backdrop>:is(.night-collage,.poster-ribbon,.poster-orbit,.poster-halftone,.poster-grid,.backdrop-token,.poster-trails){display:none}
+.arcade-stage[data-background="graphic"] .motion-backdrop::before{inset:0;background:url('assets/pixel-arcade-background.svg') center/cover no-repeat;opacity:1;transform:none}
+.arcade-stage[data-background="graphic"] .motion-backdrop::after{box-shadow:none;background:radial-gradient(ellipse at 50% 38%,#08061155 15%,transparent 70%);opacity:1}
+.arcade-stage[data-background="graphic"] .arcade-tint{background:transparent}
+.arcade-stage[data-background="graphic"] .arcade-light{background:transparent}
+.arcade-stage[data-background="graphic"] .arcade-light::before,.arcade-stage[data-background="graphic"] .arcade-light::after{display:none}
+.cabinet-rays{position:absolute;inset:-13% -27% 10%;z-index:3;background:url('assets/crt-rays.svg') center/100% 100% no-repeat;mix-blend-mode:screen;opacity:.85;pointer-events:none}
+.screen-sprite-motion{filter:drop-shadow(0 0 3px #d3faff99) drop-shadow(0 0 9px #3cb8f077) brightness(1.18)}
+.arcade-object{isolation:isolate}
+.arcade-object::before{content:"";position:absolute;inset:-38%;z-index:-1;pointer-events:none;background:radial-gradient(ellipse,var(--object-glow) 0%,color-mix(in srgb,var(--object-glow) 55%,transparent) 23%,transparent 68%);opacity:.65;transition:opacity .2s,scale .2s}
+.arcade-object:is(.is-hovered,:hover,:focus-visible)::before{opacity:1;scale:1.35}
+.object-sprite{filter:drop-shadow(0 0 4px #fff1feb0) drop-shadow(0 0 22px var(--object-glow,#b465ffb0))}
+.arcade-object:is(.is-hovered,:hover,:focus-visible)>.object-sprite{filter:drop-shadow(0 0 5px #fff5db) drop-shadow(0 0 25px var(--object-glow)) drop-shadow(0 0 48px var(--object-glow)) brightness(1.15)}
+/* Small stepped corners keep the silhouettes readable, including 44px mobile controls. */
+button:not(:is(.arcade-object,.cartridge,.project-visual,.archive-study)),.pill,.arcade-header .hello{background-image:var(--pixel-texture)!important;border-radius:0}
+:is(.pill,.arcade-start,.motion-toggle,.dialog-close,.modal-tabs button,.skin-controls button,.gallery-thumbs button,.contact-links a,.arcade-header .hello){clip-path:var(--pixel-corners)}
+:is(.pill,.arcade-start,.motion-toggle,.dialog-close,.modal-tabs button,.skin-controls button,.gallery-thumbs button,.contact-links a,.arcade-header .hello):focus-visible{outline:3px solid var(--arcade-yellow);outline-offset:-4px}
+.motion-toggle{padding:10px 12px;border:1px solid var(--content-rule);background-color:#191222;min-height:44px}
+.arcade-header .hello{border:1px solid var(--content-rule)}
+:is(.scene-design-board,.scene-build-board,.scene-archive-board,.arcade-levels,.arcade-player-note,.skin-view,.about-paper,.project-stage,.project-window,.asset-panel,.overview-image,.archive-list>a,.archive-list>button,dialog,.dialog-header,.showcase-bar,.window-bar,.archive-caption,.preview-caption,.preview-content.notes,.preview-content.toolkit,.tags span,.skill-labels span,.archive-row-index,.object-label){background-image:var(--pixel-texture);border-radius:0}
+:is(.scene-design-board,.scene-build-board,.scene-archive-board,.arcade-levels,.about-paper,.asset-panel,.archive-list>a,.archive-list>button,dialog){border-width:2px;box-shadow:inset 2px 2px #ffffff12,inset -2px -2px #0005,4px 4px #05030b80}
+:is(.folder-icon,.about-paper,.asset-panel,.archive-list>a,.archive-list>button,.archive-row-index,.tags span,.skill-labels span){clip-path:var(--pixel-corners)}
+.folders .folder-icon{background-image:var(--pixel-texture);border-radius:0;border:2px solid #ffffff44;box-shadow:inset -3px -3px #0002,inset 2px 2px #fff3}
+.cartridge>.cartridge-face{background-image:var(--pixel-texture),linear-gradient(150deg,var(--card-top),var(--card-bottom))!important;clip-path:var(--pixel-corners)}
+.cartridge:focus-visible{outline:3px solid var(--arcade-yellow);outline-offset:7px}
+.archive-list>:is(button,a):focus-visible{outline-offset:-5px}
+.project-stage{box-shadow:inset 2px 2px #ffffff18,inset -2px -2px #0005}
+.cabinet-marquee::after{background-image:var(--pixel-texture),url('assets/cabinet-grain.svg'),linear-gradient(130deg,#351745,#161725 60%,#153447)}
+.cabinet-rays,.arcade-object::before{user-select:none}
+@media(max-width:650px){.cabinet-rays{opacity:.55;inset:-6% -19% 13%}.arcade-object::before{inset:-28%}.motion-toggle{padding:8px 7px;min-width:0}.arcade-header .hello{padding:12px 7px}}
+@media(prefers-reduced-motion:reduce){.arcade-object::before{transition:none}}
