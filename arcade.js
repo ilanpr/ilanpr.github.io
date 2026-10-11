@@ -33,7 +33,7 @@ const playgroundSettings = {
 // Scene poses: x, y (fractions of the stage), rotation, scale, opacity.
 const cardPoses = [
  [[.22,.9,-35,.25,0],[.4,.95,-15,.25,0],[.6,.95,15,.25,0],[.78,.9,35,.25,0]],
- [[.145,.60,0,.90,1],[.856,.60,0,.90,1],[.382,.60,0,.90,1],[.619,.60,0,.90,1]],
+ [[.145,.60,-3,.90,1],[.855,.595,3,.90,1],[.382,.56,2,.90,1],[.618,.61,-2,.90,1]],
  [[.46,.76,-8,.42,1],[.81,.54,0,1.05,1],[.55,.77,0,.42,1],[.64,.76,8,.42,1]],
  [[-.2,.7,-30,.35,0],[1.2,.55,25,.7,0],[-.2,.9,-20,.35,0],[1.2,.9,25,.35,0]],
  [[-.2,.5,-35,.5,0],[1.2,.5,35,.5,0],[-.2,.8,-35,.5,0],[1.2,.8,35,.5,0]]
@@ -58,6 +58,13 @@ function clamp01(v){return Math.max(0,Math.min(1,v));}
 function smoothstep(start,end,value){const t=clamp01((value-start)/(end-start));return t*t*(3-2*t);}
 function mixPose(a,b,t){const smooth=t*t*(3-2*t);return a.map((v,i)=>v+(b[i]-v)*smooth);}
 function poseAt(poses,progress,index){const p=clamp01(progress)*(poses.length-1);const start=Math.min(Math.floor(p),poses.length-2);return mixPose(poses[start][index],poses[start+1][index],p-start);}
+// Keep the Design group together on wide screens without squeezing smaller viewports.
+function fitDesignPose(pose,width,weight){
+ const out=[...pose],span=Math.min(width,960);
+ out[0]=.5+(out[0]-.5)*(1-weight+weight*span/width);
+ out[3]*=1-weight+weight*Math.min(1,width/960);
+ return out;
+}
 function worldAt(progress){return Math.min(4,Math.max(0,Math.round(clamp01(progress)*4)));}
 // Morph around each chapter boundary; hold readable compositions between transitions.
 function scrollScene(progress,still=false){
@@ -181,7 +188,6 @@ function initArcade(scope,scroller) {
  changeSkin(1,false);
  const designBoard=scope.querySelector('.scene-design-board'),buildBoard=scope.querySelector('.scene-build-board'),archiveBoard=scope.querySelector('.scene-archive-board');
  function visual(p){return p.assets.Image?`<img src="${safeSrc(p.assets.Image.src)}" alt="${escapeText(p.assets.Image.alt||p.name)}">`:p.cover;}
- designBoard.querySelector('.design-media').innerHTML=projects[0].assets.Image.items.map(item=>`<div class="design-media-tile design"><img src="${safeSrc(item.src)}" alt="" loading="lazy"></div>`).join('');
  buildBoard.querySelector('.build-media').innerHTML=visual(projects[1]);
  function cancelPreviewClose(){clearTimeout(previewTimer);previewTimer=null;}
  function cancelPreviewCollapse(){clearTimeout(previewCollapseTimer);previewCollapseTimer=null;}
@@ -345,7 +351,8 @@ function initArcade(scope,scroller) {
   }
   const cardSize=mobile?[playgroundSettings.box.mobileWidth,playgroundSettings.box.mobileHeight]:[playgroundSettings.box.width,playgroundSettings.box.height];
   for(const i of [0,1,2,3]){
-   const card=cards[i],pose=poseAt(mobile?mobileCardPoses:cardPoses,poseProgress,i);
+   const card=cards[i],rawPose=poseAt(mobile?mobileCardPoses:cardPoses,poseProgress,i);
+   const pose=mobile?rawPose:fitDesignPose(rawPose,w,sceneWeight(scene,1));
    if(mobile)pose[3]*=Math.min(1,h/650);
    const opacity=pose[4];
    place(card,pose,w,h,cardSize,opacity);

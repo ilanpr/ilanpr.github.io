@@ -1101,14 +1101,14 @@ footer h2 i{display:block;font-size:.65em;margin-top:12px}
 :root{--pixel-texture:url('assets/pixel-surface.svg');--pixel-corners:polygon(0 8px,4px 8px,4px 4px,8px 4px,8px 0,calc(100% - 8px) 0,calc(100% - 8px) 4px,calc(100% - 4px) 4px,calc(100% - 4px) 8px,100% 8px,100% calc(100% - 8px),calc(100% - 4px) calc(100% - 8px),calc(100% - 4px) calc(100% - 4px),calc(100% - 8px) calc(100% - 4px),calc(100% - 8px) 100%,8px 100%,8px calc(100% - 4px),4px calc(100% - 4px),4px calc(100% - 8px),0 calc(100% - 8px))}
 .arcade-stage[data-background="graphic"] .motion-backdrop{background:#0b0917;transform:none}
 .arcade-stage[data-background="graphic"] .motion-backdrop>:is(.night-collage,.poster-ribbon,.poster-orbit,.poster-halftone,.poster-grid,.backdrop-token,.poster-trails){display:none}
-.arcade-stage[data-background="graphic"] .motion-backdrop::before{inset:0;background:url('assets/arcade-neon-collage.webp') center/cover no-repeat;opacity:.66;transform:none}
-.arcade-stage[data-background="graphic"] .motion-backdrop::after{box-shadow:none;background:radial-gradient(ellipse at 50% 38%,#08061155 15%,transparent 70%);opacity:1}
+.arcade-stage[data-background="graphic"] .motion-backdrop::before{inset:-4px;background:url('assets/arcade-neon-collage.webp') center/cover no-repeat;opacity:.58;transform:none;filter:blur(1.4px)}
+.arcade-stage[data-background="graphic"] .motion-backdrop::after{box-shadow:none;background:var(--arcade-bokeh),radial-gradient(ellipse at 50% 38%,#08061177 15%,transparent 70%);opacity:1}
 .arcade-stage[data-background="graphic"] .arcade-tint{background:transparent}
 .arcade-stage[data-background="graphic"] .arcade-light{background:transparent}
 .arcade-stage[data-background="graphic"] .arcade-light::before,.arcade-stage[data-background="graphic"] .arcade-light::after{display:none}
 .cabinet-display{position:absolute;inset:25% calc(6% + 18px) 28.5%;z-index:2;overflow:visible;pointer-events:none}
 .cabinet-display>.cabinet-screen{inset:0}
-.cabinet-rays{position:absolute;inset:9px;z-index:0;background:none;mix-blend-mode:screen;opacity:.85;pointer-events:none}
+.cabinet-rays{position:absolute;inset:9px;z-index:0;background:none;mix-blend-mode:screen;opacity:1;pointer-events:none}
 .cabinet-rays>svg{display:block;width:100%;height:100%;overflow:visible}
 .screen-sprite-motion{filter:drop-shadow(0 0 3px #d3faff99) drop-shadow(0 0 9px #3cb8f077) brightness(1.18)}
 .arcade-object{isolation:isolate}
@@ -1139,5 +1139,14 @@ button.arcade-start{clip-path:none}
 .cabinet-rays,.arcade-object::before{user-select:none}
 @media(max-width:900px){.cabinet-display{inset:24% calc(6% + 18px) 29.5%}}
 @media(max-width:650px){.arcade-stage[data-background="graphic"] .motion-backdrop::before{background-size:auto 100%;opacity:.55}}
-@media(max-width:650px){.cabinet-rays{opacity:.55;inset:5px}.arcade-object::before{inset:-28%}.motion-toggle{padding:8px 7px;min-width:0}.arcade-header .hello{padding:12px 7px}}
+@media(max-width:650px){.cabinet-rays{opacity:.8;inset:5px}.arcade-object::before{inset:-28%}.motion-toggle{padding:8px 7px;min-width:0}.arcade-header .hello{padding:12px 7px}}
 @media(prefers-reduced-motion:reduce){.arcade-object::before{transition:none}}
+
+/* Soft optics live behind the artwork; pixel edges and reading surfaces stay crisp. */
+:root{--arcade-bokeh:radial-gradient(circle 44px at 6% 28%,#b698ff66 0%,#8f67ee22 58%,transparent 100%),radial-gradient(circle 24px at 15% 74%,#ffe3a366 0%,#ffbc7022 55%,transparent 100%),radial-gradient(circle 72px at 93% 38%,#55dfff55 0%,#3289dd16 60%,transparent 100%),radial-gradient(circle 32px at 86% 81%,#f8a0da55 0%,#e564b61a 55%,transparent 100%),radial-gradient(circle 95px at 3% 91%,#9b61e933 0%,transparent 100%);--page-bokeh:radial-gradient(circle 55px at 3% 23%,#a582ff22 0%,#a582ff0a 60%,transparent 100%),radial-gradient(circle 95px at 97% 63%,#68d9ff1f 0%,#68d9ff08 60%,transparent 100%),radial-gradient(circle 30px at 90% 16%,#ffb4dc25 0%,transparent 100%),radial-gradient(circle 45px at 7% 84%,#ffdc981c 0%,transparent 100%)}
+.work.section::before,.archive.section::before{background-image:var(--page-bokeh);background-size:100% 740px;background-repeat:repeat-y}
+.about,footer{background-image:var(--page-bokeh);background-size:100% 760px}
+.scene-design-board{background-color:#10091f96;backdrop-filter:blur(5px)}
+.cartridge{filter:drop-shadow(0 0 5px var(--card-rim)) drop-shadow(0 0 19px var(--card-halo));transition:filter .2s ease-out}
+.cartridge:is(.is-hovered,:focus-visible){filter:drop-shadow(0 0 7px var(--card-rim)) drop-shadow(0 0 30px var(--card-halo))}
+@media(prefers-reduced-motion:reduce){.cartridge{transition:none}}
