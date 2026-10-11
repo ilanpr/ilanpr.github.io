@@ -16,10 +16,10 @@ const playgroundSettings = {
  // Each src is a separate transparent file. Mobile overrides only the listed values.
  screenSprites: {
   invader:{src:'assets/screen-invader.webp',x:12,y:11,size:30,rotation:0,float:4,tilt:3,duration:7800,mobile:{x:13,y:12,size:22}},
-  ghost:{src:'assets/screen-ghost.webp',x:8,y:61,size:28,rotation:0,float:5,tilt:4,duration:9200,mobile:{x:12,y:61,size:22}},
-  ship:{src:'assets/screen-ship.webp',x:17,y:83,size:42,rotation:0,float:6,tilt:2,duration:11000,mobile:{x:14,y:83,size:27}},
+  ghost:{src:'assets/screen-ghost.webp',x:8,y:61,size:28,rotation:0,float:5,tilt:4,duration:9200,mobile:{x:10,y:70,size:19}},
+  ship:{src:'assets/screen-ship.webp',x:17,y:83,size:42,rotation:0,float:6,tilt:2,duration:11000,mobile:{x:15,y:86,size:25}},
   star:{src:'assets/screen-star.webp',x:89,y:17,size:37,rotation:0,float:4,tilt:5,duration:8500,mobile:{x:88,y:13,size:25}},
-  meteor:{src:'assets/screen-meteor.webp',x:94,y:55,size:30,rotation:0,float:6,tilt:3,duration:10400,mobile:{x:87,y:46,size:24}},
+  meteor:{src:'assets/screen-meteor.webp',x:94,y:55,size:30,rotation:0,float:6,tilt:3,duration:10400,mobile:{x:90,y:69,size:18}},
   crystal:{src:'assets/screen-crystal.webp',x:83,y:86,size:17,rotation:0,float:4,tilt:4,duration:9600,mobile:{x:89,y:86,size:17}}
  },
  // x, y, rotation, scale, opacity. These are preferred positions; content clearance wins.
@@ -153,6 +153,9 @@ function cameraTarget(pointer,progress,still=false) {
  const distance=Math.min(1,Math.hypot(...pointer));
  return {x:-pointer[0]*20,y:-pointer[1]*14-progress*6,zoom:1.025+progress*.03+distance*.018,rotation:Math.sin(progress*Math.PI*4)*.8};
 }
+function cabinetTilt(pointer,weight,still=false){
+ return still?[0,0]:[-Math.max(-1,Math.min(1,pointer[1]))*2*weight,Math.max(-1,Math.min(1,pointer[0]))*3*weight];
+}
 function initArcade(scope,scroller) {
  const stage=scope.querySelector('.arcade-stage');
  if(!stage)return;
@@ -164,6 +167,7 @@ function initArcade(scope,scroller) {
  const meteorRoot=scope.querySelector('.crt-meteors');
  meteorRoot.innerHTML=Array.from({length:9},(_,i)=>`<i style="--mx:${(i*29+9)%115}%;--my:${(i*23)%80}%;--ms:${2+i%3}px;--mt:${['#72eaff','#ff87df','#ffd773'][i%3]};--md:${7+i%4*2}s;--delay:-${i*2.3}s"></i>`).join('');
  const cabinet=scope.querySelector('.arcade-cabinet');
+ const rig=scope.querySelector('.cabinet-rig'),transitionMascot=scope.querySelector('.chapter-mascot');
  const video=scope.querySelector('.cover-video');
  const archiveVideo=scope.querySelector('.archive-video');
  const previewLayer=scope.querySelector('.arcade-preview-layer');
@@ -318,6 +322,9 @@ function initArcade(scope,scroller) {
   const focusRect=!still&&focused?focused.el.getBoundingClientRect():null;
   const scene=scrollScene(progress,still),next=scene.chapter,poseProgress=scene.poseProgress;
   const coverWeight=sceneWeight(scene,0),sceneOpacity=scene.headlineOpacity;
+  const transitionWeight=still||scene.stable?0:Math.sin(scene.mix*Math.PI);
+  transitionMascot.style.opacity=String(transitionWeight*.9);
+  transitionMascot.style.transform=`translateX(${(scene.mix-.5)*90}px) rotate(${(scene.mix-.5)*16}deg)`;
   const sceneKey=[progress,w,h,still,previewCard?.dataset.project].join('|'),sceneChanged=paintedScene!==sceneKey;
   if(sceneChanged){
   paintedScene=sceneKey;
@@ -389,6 +396,8 @@ function initArcade(scope,scroller) {
    else {const delta=target[key]-cameraPose[key];cameraPose[key]+=delta*.12;if(Math.abs(delta)>(key==='zoom'?.0003:.025))moving=true;}
   }
   camera.style.transform=still?'none':`translate3d(${cameraPose.x}px,${cameraPose.y}px,0) scale(${cameraPose.zoom}) rotate(${cameraPose.rotation}deg)`;
+  const tilt=cabinetTilt([-cameraPose.x/20,-(cameraPose.y+progress*6)/14],coverWeight,still||mobile);
+  rig.style.transform=tilt.every(v=>v===0)?'none':`perspective(1400px) rotateX(${tilt[0]}deg) rotateY(${tilt[1]}deg)`;
   const spotlight=lightPosition(poseProgress,still?null:pointerClient,rect,focusRect);
   light.style.setProperty('--light-x',(spotlight[0]*w).toFixed(1)+'px');
   light.style.setProperty('--light-y',(spotlight[1]*h).toFixed(1)+'px');

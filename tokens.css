@@ -3,10 +3,14 @@
  --color-paper:#120f1b;--color-paper-2:#1d1828;--color-paper-3:#2a2136;
  --color-ink:#f8eedc;--color-ink-2:#c7bdd0;--color-dark:#1c1726;
  --color-rule:#66516f;--color-rule-soft:#514255;
- --color-accent:#ffdc72;--color-accent-deep:#c68d3e;--color-focus:#b2f2ec;
+ --color-accent:#ffdc72;--color-accent-ink:#1c1726;--color-accent-deep:#c68d3e;--color-focus:#b2f2ec;
  --color-cream:#ead4b7;--color-rose:#bb778e;--color-rose-light:#dfabb8;
  --color-enamel:#50374f;--color-enamel-deep:#281e36;--color-enamel-light:#886582;
- --color-lilac:#c8b0e0;--color-cyan:#9fd3d6;--color-screen:#101c30;
+ --color-lilac:#c8b0e0;--color-cyan:#b8f1eb;--color-crt:#68e4df;--color-screen:#101c30;
+ --color-design-top:#e9ddf3;--color-design-bottom:#b69bcb;--color-design-halo:#a78bd377;
+ --color-interface-top:#e4edf0;--color-interface-bottom:#a5bdcc;--color-interface-halo:#88cad977;
+ --color-motion-top:#f1d5df;--color-motion-bottom:#d79db5;--color-motion-halo:#d888b577;
+ --color-engineering-top:#ffe9a0;--color-engineering-bottom:#dfbd5b;--color-engineering-halo:#ebc26177;
  --color-shadow:#05030bb3;--color-shadow-deep:#030208e8;--color-highlight:#fff2d338;
  --font-display:'Space Grotesk',sans-serif;--font-body:Inter,sans-serif;--font-pixel:'Pixelify Sans',monospace;
  --space-xs:8px;--space-sm:12px;--space-md:20px;--space-lg:32px;--space-xl:48px;--space-2xl:80px;
