@@ -167,7 +167,7 @@ function initArcade(scope,scroller) {
  const meteorRoot=scope.querySelector('.crt-meteors');
  meteorRoot.innerHTML=Array.from({length:9},(_,i)=>`<i style="--mx:${(i*29+9)%115}%;--my:${(i*23)%80}%;--ms:${2+i%3}px;--mt:${['#72eaff','#ff87df','#ffd773'][i%3]};--md:${7+i%4*2}s;--delay:-${i*2.3}s"></i>`).join('');
  const cabinet=scope.querySelector('.arcade-cabinet');
- const rig=scope.querySelector('.cabinet-rig'),transitionMascot=scope.querySelector('.chapter-mascot');
+ const rig=scope.querySelector('.cabinet-rig');
  const video=scope.querySelector('.cover-video');
  const archiveVideo=scope.querySelector('.archive-video');
  const previewLayer=scope.querySelector('.arcade-preview-layer');
@@ -190,7 +190,7 @@ function initArcade(scope,scroller) {
  skinSelector.querySelectorAll('[data-skin-step]').forEach(button=>button.addEventListener('click',()=>changeSkin(skinIndex+Number(button.dataset.skinStep))));
  skinSelector.addEventListener('keydown',event=>{if(event.key==='ArrowLeft'||event.key==='ArrowRight'){event.preventDefault();changeSkin(skinIndex+(event.key==='ArrowLeft'?-1:1));}});
  changeSkin(1,false);
- const designBoard=scope.querySelector('.scene-design-board'),buildBoard=scope.querySelector('.scene-build-board'),archiveBoard=scope.querySelector('.scene-archive-board');
+ const designBoard=scope.querySelector('.scene-design-assembly'),buildBoard=scope.querySelector('.scene-build-board'),archiveBoard=scope.querySelector('.scene-archive-board');
  function visual(p){return p.assets.Image?`<img src="${safeSrc(p.assets.Image.src)}" alt="${escapeText(p.assets.Image.alt||p.name)}">`:p.cover;}
  buildBoard.querySelector('.build-media').innerHTML=visual(projects[1]);
  function cancelPreviewClose(){clearTimeout(previewTimer);previewTimer=null;}
@@ -322,9 +322,6 @@ function initArcade(scope,scroller) {
   const focusRect=!still&&focused?focused.el.getBoundingClientRect():null;
   const scene=scrollScene(progress,still),next=scene.chapter,poseProgress=scene.poseProgress;
   const coverWeight=sceneWeight(scene,0),sceneOpacity=scene.headlineOpacity;
-  const transitionWeight=still||scene.stable?0:Math.sin(scene.mix*Math.PI);
-  transitionMascot.style.opacity=String(transitionWeight*.9);
-  transitionMascot.style.transform=`translateX(${(scene.mix-.5)*90}px) rotate(${(scene.mix-.5)*16}deg)`;
   const sceneKey=[progress,w,h,still,previewCard?.dataset.project].join('|'),sceneChanged=paintedScene!==sceneKey;
   if(sceneChanged){
   paintedScene=sceneKey;
