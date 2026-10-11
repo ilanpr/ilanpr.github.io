@@ -280,12 +280,13 @@ function initArcade(scope,scroller) {
  function motionPaused(){return reduceMotion.matches||page.classList.contains('paused');}
  function syncMedia(){
   const blocked=motionPaused()||page.classList.contains('modal-open')||document.hidden||!sceneVisible;
-  skinSelector.querySelector('.skin-projection').style.animationPlayState=blocked||chapter!==4?'paused':'running';
+  skinSelector.querySelector('.skin-projection').style.animationPlayState='paused';
   if(blocked||chapter!==3)archiveVideo.pause();
   for(const sprite of screenSprites){if(blocked||Number(cabinet.style.opacity)<.01)sprite.animation.pause();else if(sprite.animation.playState!=='running')sprite.animation.play();}
   cabinet.querySelector('.crt-grid').style.animationPlayState=blocked||chapter!==0?'paused':'running';
   meteorRoot.querySelectorAll('i').forEach(el=>el.style.animationPlayState=blocked||chapter!==0?'paused':'running');
-  for(const entry of floats.values())syncFloat(entry,blocked,previewCard);
+  // Content holds its pose; chapter movement and hover response remain active.
+  for(const entry of floats.values())syncFloat(entry,true,previewCard);
   for(const animation of backdropAnimations){
    if(blocked||playgroundSettings.background.mode!=='graphic'){if(animation.playState!=='paused')animation.pause();}
    else if(animation.playState!=='running')animation.play();

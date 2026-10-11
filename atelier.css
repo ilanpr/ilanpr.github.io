@@ -1,20 +1,20 @@
 /* Hallmark · macrostructure: arcade journey + alternating project folio · tone: tactile playful · anchor hue: warm plum
- * Pre-emit critique: P4 H4 E4 S5 R4 V4. User reference: printed cabinet, physical shadows and glass.
+ * Pre-emit critique: P4 H5 E4 S5 R5 V4. User reference: printed cabinet, physical shadows and glass.
  * Existing arcade geometry, original work and pixel characters remain the design anchors. */
 :root{--arcade-yellow:var(--color-accent);--arcade-white:var(--color-ink);--arcade-muted:var(--color-ink-2);--arcade-black:var(--color-paper);--display:var(--font-display);--body:var(--font-body);--content-paper:var(--color-paper);--content-rule:var(--color-rule-soft);--content-light:var(--color-ink);--pixel-texture:url('assets/arcade-print.svg')}
 body{background:var(--color-paper);color:var(--color-ink)}
 h1,h2,h3{min-width:0;overflow-wrap:anywhere}
-.arcade-header{background:var(--color-paper);border-bottom:1px solid var(--color-rule-soft);box-shadow:0 8px 24px var(--color-shadow)}
+.arcade-header{background:var(--color-paper);border-bottom:1px solid var(--color-rule-soft);box-shadow:none}
 .arcade-header nav a{padding-block:var(--space-sm);text-underline-offset:7px;transition:color var(--dur-fast)}
 .arcade-header nav a:hover{color:var(--color-accent)}
 .motion-toggle,.arcade-header .hello{background-color:var(--color-paper-2);border-color:var(--color-rule-soft);box-shadow:inset 0 1px var(--color-highlight);white-space:nowrap}
 .arcade-header .hello{color:var(--color-accent)}
-.arcade-stage[data-background="graphic"] .motion-backdrop::before{inset:-22px;background-image:url('assets/arcade-room-v2.webp');opacity:.76;filter:blur(7px) saturate(.82)}
-.arcade-stage[data-background="graphic"] .motion-backdrop::after{background:var(--arcade-bokeh);opacity:.85;filter:blur(5px)}
-.pixel-particles{opacity:.45}
+.arcade-stage[data-background="graphic"] .motion-backdrop::before{inset:-22px;background-image:url('assets/arcade-room-v2.webp');opacity:.28;filter:blur(4px) saturate(.55)}
+.arcade-stage[data-background="graphic"] .motion-backdrop::after{background:none;opacity:0;filter:none}
+.pixel-particles{display:none}
 
 /* Enamel, edge trim, smoked glass and weighted controls. No text in the material layers. */
-.arcade-cabinet{filter:drop-shadow(0 10px 1px var(--color-shadow-deep)) drop-shadow(0 28px 24px var(--color-shadow))}
+.arcade-cabinet{filter:drop-shadow(0 8px 2px var(--color-shadow-deep))}
 .arcade-cabinet::before{background:linear-gradient(180deg,transparent 75%,var(--color-shadow-deep)),linear-gradient(112deg,var(--color-cream),var(--color-enamel-light) 10%,var(--color-enamel-deep) 28%,var(--color-enamel-deep) 72%,var(--color-cyan) 94%,var(--color-cream))}
 .arcade-cabinet::after{background:url('assets/cabinet-grain.svg'),linear-gradient(100deg,var(--color-enamel),var(--color-enamel-deep) 23%,var(--color-paper-2) 73%,var(--color-enamel))}
 .cabinet-marquee::before{background:linear-gradient(100deg,var(--color-cream),var(--color-enamel-light) 55%,var(--color-cyan))}
@@ -31,9 +31,9 @@ h1,h2,h3{min-width:0;overflow-wrap:anywhere}
 .cabinet-base{background:url('assets/cabinet-grain.svg'),linear-gradient(var(--color-paper),var(--color-shadow-deep) 45%);border-top-color:var(--color-enamel-light)}
 .arcade-stage[data-world="0"] .arcade-title{padding:0 6px 6px}
 .arcade-stage[data-world="0"] .arcade-subtitle{color:var(--color-cyan)!important;text-shadow:0 2px 2px var(--color-shadow-deep)}
-.arcade-start{border-color:var(--color-cream)!important;white-space:nowrap;box-shadow:0 3px 0 var(--color-accent-deep),0 7px 0 var(--color-shadow-deep),0 0 30px color-mix(in srgb,var(--color-accent) 42%,transparent)!important}
+.arcade-start{border-color:var(--color-cream)!important;white-space:nowrap;box-shadow:0 3px 0 var(--color-accent-deep),0 7px 0 var(--color-shadow-deep),0 0 0 transparent!important}
 .arcade-start:active{translate:0 2px}
-.object-sprite,.cartridge-art img{filter:drop-shadow(3px 5px 0 var(--color-shadow)) drop-shadow(0 0 14px var(--object-glow,var(--card-halo)))}
+.object-sprite,.cartridge-art img{filter:drop-shadow(2px 3px 0 var(--color-shadow))}
 .arcade-stage:not([data-world="0"]) .arcade-title{line-height:1.13;padding-bottom:3px}
 
 /* Project selection is a small collection of printed game boxes. */
@@ -43,8 +43,8 @@ h1,h2,h3{min-width:0;overflow-wrap:anywhere}
 .cartridge.interface{--card-top:var(--color-interface-top);--card-bottom:var(--color-interface-bottom);--card-rim:var(--color-cyan);--card-halo:var(--color-interface-halo)}
 .cartridge.motion{--card-top:var(--color-motion-top);--card-bottom:var(--color-motion-bottom);--card-rim:var(--color-rose-light);--card-halo:var(--color-motion-halo)}
 .cartridge.engineering{--card-top:var(--color-engineering-top);--card-bottom:var(--color-engineering-bottom);--card-rim:var(--color-accent);--card-halo:var(--color-engineering-halo)}
-.cartridge{filter:drop-shadow(3px 7px 0 var(--color-shadow-deep)) drop-shadow(0 12px 16px var(--color-shadow)) drop-shadow(0 0 16px var(--card-halo))}
-.cartridge:is(.is-hovered,:focus-visible){filter:drop-shadow(4px 9px 0 var(--color-shadow-deep)) drop-shadow(0 0 25px var(--card-halo))}
+.cartridge{filter:drop-shadow(3px 5px 0 var(--color-shadow-deep))}
+.cartridge:is(.is-hovered,:focus-visible){filter:drop-shadow(3px 5px 0 var(--color-shadow-deep))}
 .cartridge>.cartridge-face{box-shadow:inset 2px 2px color-mix(in srgb,var(--color-ink) 70%,transparent),inset -4px -4px color-mix(in srgb,var(--color-dark) 24%,transparent)}
 .cartridge h3{line-height:1.12;overflow-wrap:normal}
 .arcade-levels{background-color:var(--color-paper-2);border-color:var(--color-rule);box-shadow:var(--shadow-raised)!important}
@@ -53,45 +53,45 @@ h1,h2,h3{min-width:0;overflow-wrap:anywhere}
 .arcade-levels button:active{box-shadow:inset 0 3px var(--color-shadow)}
 
 /* Catalogue: larger breathing room and alternating editorial rhythm. */
-.ticker{background:var(--color-accent);padding-block:var(--space-sm);border-block:3px solid var(--color-dark);box-shadow:0 5px 0 var(--color-enamel)}
-.ticker>div{font-family:var(--font-pixel);letter-spacing:.08em;animation-duration:38s}
+.ticker{background:var(--color-accent);padding-block:var(--space-sm);border-block:1px solid var(--color-dark);box-shadow:none}
+.ticker>div{font-family:var(--font-pixel);letter-spacing:.08em;animation:none}
 .section-title h2,.about-copy h2,.about-paper h2,footer h2{line-height:1.14;padding-bottom:.06em}
-.section-title h2{font-size:var(--text-title)}
+.section-title h2{font:700 var(--text-title)/1.05 var(--font-pixel);letter-spacing:-.025em}
 .section-title .eyebrow,.about-copy>.eyebrow{display:block;color:var(--color-cream);font-size:var(--text-xs);letter-spacing:.11em;margin-bottom:var(--space-md)}
 .work.section,.archive.section{padding-block:var(--space-2xl)}
 .section-note,.section-title>p,.sample-note{color:var(--color-ink-2);line-height:1.7}
 .sample-note{font-size:var(--text-sm)}
 .project{gap:7%;margin-top:var(--space-2xl);padding-bottom:var(--space-2xl);border-color:var(--color-rule-soft)}
-.project-visual{clip-path:none!important;border:1px solid var(--color-rule);box-shadow:5px 7px 0 var(--color-paper-3),var(--shadow-panel);overflow:visible;transition:box-shadow var(--dur-panel),border-color var(--dur-fast)}
-.project-stage{background:var(--color-paper-2)!important;padding:var(--space-md);box-shadow:inset 0 2px var(--color-highlight)}
+.project-visual{clip-path:none!important;border:0;box-shadow:none;overflow:visible;transition:opacity var(--dur-fast)}
+.project-stage{background:transparent!important;padding:0;box-shadow:none}
 .project-stage .cover-label{color:var(--color-cream);letter-spacing:.1em;font-size:var(--text-xs);margin-bottom:var(--space-md)!important}
-.work-cover{background:var(--color-paper);max-height:490px}
+.work-cover{background:var(--color-paper);max-height:420px}
 .project-editorial>h3{font-size:clamp(28px,3vw,42px);line-height:1.15;letter-spacing:-.035em}
 .project-editorial>p:not(.project-index){font-size:var(--text-body);font-weight:500;line-height:1.8;max-width:42ch;color:var(--color-ink-2)}
 .project-index{color:var(--color-cream);letter-spacing:.045em}
-.project-editorial .tags span,.skill-labels span{border:1px solid var(--color-rule-soft);background-color:var(--color-paper-2);color:var(--color-ink-2);padding:6px 10px;line-height:1.5}
-.editorial-open{white-space:nowrap;color:var(--color-accent);padding-inline:var(--space-sm);background-color:var(--color-paper-2);border:1px solid var(--color-rule);box-shadow:3px 3px 0 var(--color-shadow-deep)}
+.project-editorial .tags span,.skill-labels span{border:0;background:none;color:var(--color-ink-2);padding:0 14px 0 0;line-height:1.5}
+.editorial-open{white-space:nowrap;color:var(--color-accent);padding:12px 0;background:none;border:0;border-bottom:1px solid var(--color-rule);box-shadow:none}
 .editorial-open:active{translate:1px 1px}
 .about{padding-block:var(--space-2xl);background-color:var(--color-paper-2);border-block:1px solid var(--color-rule-soft)}
-.about-paper{background-color:var(--color-cream);color:var(--color-dark);box-shadow:6px 8px 0 var(--color-enamel),0 24px 40px var(--color-shadow);transform:rotate(-3deg);padding:var(--space-lg)}
+.about-paper{background-color:var(--color-cream);color:var(--color-dark);box-shadow:3px 4px 0 var(--color-shadow);transform:none;padding:var(--space-lg)}
 .about-paper h2{font-size:clamp(28px,3vw,40px)}
 .about-paper em{color:var(--color-enamel)}
 .about-paper .handwritten{font-family:var(--font-pixel);font-size:22px;font-weight:500}
 .about-copy>p{line-height:1.85;color:var(--color-ink-2)}
 .about-copy h2{font-size:clamp(32px,4vw,52px)}
-.folders{gap:var(--space-lg)}
-.folders button{padding:var(--space-md);background-color:var(--color-paper-2);border:1px solid var(--color-rule-soft);box-shadow:var(--shadow-raised);min-width:0}
-.folders .folder-icon{margin:0 0 var(--space-md);height:76px;font-family:var(--font-pixel);font-size:44px;box-shadow:inset 2px 2px var(--color-highlight),inset -3px -3px color-mix(in srgb,var(--color-dark) 20%,transparent)}
-.folders b{line-height:1.35;font-size:18px;margin-top:var(--space-md)}
+.folders{grid-template-columns:minmax(0,1fr);gap:0}
+.folders button{display:grid;grid-template-columns:56px minmax(0,1fr) minmax(0,1fr);align-items:center;gap:var(--space-md);padding:24px 0;background:none;border:0;border-top:1px solid var(--color-rule-soft);box-shadow:none;min-width:0;transform:none}
+.folders .folder-icon{display:block;margin:0;height:auto;padding:0;background:none!important;border:0;clip-path:none;box-shadow:none;color:var(--color-accent)!important;font:700 28px/1 var(--font-pixel)}
+.folders b{line-height:1.35;font-size:18px;margin-top:0}
 .folders button>span:last-child{line-height:1.7;font-size:var(--text-sm);color:var(--color-ink-2)}
 footer{padding-top:var(--space-2xl);background-color:var(--color-paper-2);border-top:1px solid var(--color-rule-soft)}
 footer h2{font-size:clamp(40px,6.5vw,88px);letter-spacing:-.04em}
-footer .pill.yellow{box-shadow:4px 5px 0 var(--color-accent-deep),0 14px 22px var(--color-shadow);padding:18px 24px;white-space:nowrap}
+footer .pill.yellow{box-shadow:0 3px 0 var(--color-accent-deep);padding:18px 24px;white-space:nowrap}
 .footer-bottom{line-height:1.6;align-items:center;gap:var(--space-md)}
 
 /* Readable dialogs and a short, physical entrance. */
-dialog{border-color:var(--color-rule);box-shadow:0 0 0 5px var(--color-paper-3),0 35px 90px var(--color-shadow-deep)}
-dialog::backdrop{background:color-mix(in srgb,var(--color-paper) 78%,transparent);backdrop-filter:blur(8px)}
+dialog{border-color:var(--color-rule);box-shadow:none}
+dialog::backdrop{background:color-mix(in srgb,var(--color-paper) 78%,transparent);backdrop-filter:none}
 dialog[open]{animation:atelier-dialog var(--dur-panel) var(--ease-out) both}
 .dialog-header{padding-right:76px;background-color:var(--color-paper-2)}
 .dialog-header h2{line-height:1.15;max-width:100%;font-size:clamp(28px,4vw,48px)}
@@ -105,12 +105,12 @@ dialog[open]{animation:atelier-dialog var(--dur-panel) var(--ease-out) both}
 .has-motion .project.reveal .project-editorial{transition-delay:90ms}
 .has-motion .project.reveal.visible .project-visual,.has-motion .project.reveal.visible .project-editorial{opacity:1;translate:none}
 @keyframes atelier-dialog{from{opacity:0;transform:translateY(12px) scale(.985)}to{opacity:1;transform:none}}
-@media(hover:hover){.project-visual:hover{border-color:var(--color-cream);box-shadow:7px 9px 0 var(--color-paper-3),0 22px 42px var(--color-shadow)}.folders button:hover{border-color:var(--color-cream)}.editorial-open:hover{color:var(--color-ink);background-color:var(--color-paper-3)}}
+@media(hover:hover){.project-visual:hover{opacity:.9}.folders button:hover{border-color:var(--color-cream);transform:none}.editorial-open:hover{color:var(--color-ink);background-color:var(--color-paper-3)}}
 @media(min-width:901px){.project:nth-child(even){grid-template-columns:minmax(0,1fr) minmax(0,1.6fr)}.project:nth-child(even) .project-visual{order:2}.project:nth-child(even) .project-editorial{order:1}.work-orbit{left:49%;width:clamp(210px,23vw,330px);--orbit-x:30px;--orbit-y:20px}}
 @media(max-width:900px){.folders{gap:var(--space-md)}.folders button{padding:var(--space-sm)}.about-paper{padding:var(--space-md)}}
 @media(min-width:651px) and (max-width:900px){.arcade-stage[data-world="0"] .arcade-title{font-size:clamp(48px,8.3vw,74px)}}
 @media(max-width:650px){
- .arcade-stage[data-background="graphic"] .motion-backdrop::before{opacity:.8;background-size:auto 100%}
+ .arcade-stage[data-background="graphic"] .motion-backdrop::before{opacity:.28;background-size:auto 100%}
  .arcade-header{padding-inline:4%;gap:8px}.arcade-header .hello{font-size:9px}
  .arcade-stage[data-world="0"] .arcade-subtitle{font-size:clamp(15px,4.5vw,24px)}
  .arcade-stage:not([data-world="0"]) .arcade-title{line-height:1.12}
@@ -120,9 +120,9 @@ dialog[open]{animation:atelier-dialog var(--dur-panel) var(--ease-out) both}
  .project{margin-top:var(--space-xl);padding-bottom:var(--space-xl)}
  .project-stage{padding:var(--space-sm)}.project-editorial>h3{font-size:30px}
  .project-editorial>p:not(.project-index){font-size:14px}
- .about-paper{transform:rotate(-2deg)}.about-paper h2{font-size:clamp(25px,7.5vw,38px)}
+ .about-paper{transform:none}.about-paper h2{font-size:clamp(25px,7.5vw,38px)}
  .folders{gap:var(--space-sm)}.folders b{font-size:15px}.folders button>span:last-child{font-size:12px}
- .folders .folder-icon{height:62px;font-size:36px}
+ .folders .folder-icon{height:auto;font-size:26px}
  .dialog-header{padding:52px 22px 24px}.dialog-content{padding:var(--space-md)}
  .footer-bottom{align-items:flex-start;flex-direction:column}.footer-bottom a{padding-block:var(--space-xs)}
  footer h2{max-width:100%;font-size:clamp(38px,10vw,62px)}
@@ -136,10 +136,10 @@ button:disabled{opacity:.5;cursor:not-allowed;filter:saturate(.4)}
 .cabinet-rig{position:absolute;inset:0;z-index:3;pointer-events:none;transform-origin:50% 46%;transform-style:preserve-3d}
 .arcade-stage:not([data-world="0"]) .cabinet-rig{display:contents}
 .cabinet-rig .arcade-start{pointer-events:auto}
-.cabinet-screen{background-color:var(--color-screen);box-shadow:0 0 0 2px var(--color-enamel-light),0 0 0 4px var(--color-enamel-deep),0 0 0 5px var(--color-cyan),0 5px 0 7px var(--color-shadow),0 0 26px 9px color-mix(in srgb,var(--color-crt) 45%,transparent),0 0 80px 22px color-mix(in srgb,var(--color-crt) 24%,transparent),inset 0 0 20px color-mix(in srgb,var(--color-crt) 28%,transparent)}
+.cabinet-screen{background-color:var(--color-screen);box-shadow:0 0 0 2px var(--color-enamel-light),0 0 0 4px var(--color-enamel-deep),0 0 0 5px var(--color-cyan),0 5px 0 7px var(--color-shadow),0 0 18px 3px color-mix(in srgb,var(--color-crt) 25%,transparent),inset 0 0 20px color-mix(in srgb,var(--color-crt) 28%,transparent)}
 .crt-space{background:radial-gradient(ellipse at 50% 65%,color-mix(in srgb,var(--color-crt) 26%,transparent),transparent 80%),linear-gradient(180deg,transparent,color-mix(in srgb,var(--color-crt) 8%,transparent))}
 .crt-grid{background:radial-gradient(ellipse at 50% 75%,color-mix(in srgb,var(--color-crt) 30%,transparent),transparent 70%);opacity:.85}
-.cabinet-rays{inset:-22% -16% -18%;border-radius:35%;opacity:.75;background:radial-gradient(ellipse at 50% 52%,color-mix(in srgb,var(--color-crt) 22%,transparent),transparent 70%);filter:blur(22px)}
+.cabinet-rays{inset:-22% -16% -18%;border-radius:35%;opacity:.35;background:radial-gradient(ellipse at 50% 52%,color-mix(in srgb,var(--color-crt) 22%,transparent),transparent 70%);filter:blur(22px)}
 .cabinet-lamps i{box-shadow:0 0 5px 2px var(--color-cyan),0 0 25px 8px color-mix(in srgb,var(--color-crt) 50%,transparent)}
 .cabinet-control-group{filter:none;isolation:isolate}
 .control-shadow{position:absolute;left:-5px;top:7px;width:54px;height:35px;background:linear-gradient(180deg,var(--color-shadow-deep),var(--color-shadow) 40%,transparent);clip-path:polygon(12% 0,100% 0,78% 100%,0 100%);filter:blur(1px);z-index:-2}
@@ -158,9 +158,9 @@ button:disabled{opacity:.5;cursor:not-allowed;filter:saturate(.4)}
 .frame-arrows{display:flex;gap:10px;flex-shrink:0}
 .frame-arrows button{width:44px;height:44px;background:var(--pixel-texture),var(--color-paper-3);border:1px solid var(--color-rule);color:var(--color-accent);font-size:22px;box-shadow:3px 3px 0 var(--color-shadow-deep)}
 .frame-track{display:flex;gap:24px;overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x mandatory;padding:32px 12px 24px;scrollbar-width:thin;scrollbar-color:var(--color-rule) transparent}
-.work-frame{flex:0 0 300px;min-width:0;text-align:left;padding:12px;background:var(--pixel-texture),var(--color-cream);color:var(--color-dark);border:4px solid var(--color-enamel);box-shadow:4px 7px 0 var(--color-shadow-deep),0 13px 22px var(--color-shadow);scroll-snap-align:center;rotate:-2deg;transition:rotate var(--dur-panel),translate var(--dur-panel);align-self:center}
-.work-frame:nth-child(even){rotate:2deg;translate:0 8px}
-.frame-photo{display:block;height:210px;background:var(--color-paper);border:2px solid var(--color-dark);overflow:hidden}
+.work-frame{flex:0 0 300px;min-width:0;text-align:left;padding:0;background:none;color:var(--color-ink);border:0;box-shadow:none;scroll-snap-align:start;rotate:0deg;transition:opacity var(--dur-fast);align-self:start}
+.work-frame:nth-child(even){rotate:0deg;translate:none}
+.frame-photo{display:block;height:210px;background:var(--color-paper-2);border:1px solid var(--color-rule-soft);overflow:hidden}
 .frame-photo img{display:block;width:100%;height:100%;object-fit:contain}
 .frame-caption{position:relative;display:block;padding:14px 24px 4px 2px;min-height:76px}
 .frame-caption small{display:block;font:11px var(--font-pixel);letter-spacing:.08em;margin-bottom:8px}
@@ -171,7 +171,7 @@ button:disabled{opacity:.5;cursor:not-allowed;filter:saturate(.4)}
 .profile-links a,.footer-socials a{padding-block:10px;text-underline-offset:6px}
 .profile-links a:hover,.footer-socials a:hover{color:var(--color-accent);text-decoration:underline}
 .frame-track:focus-visible,.work-frame:focus-visible,.frame-arrows button:focus-visible{outline:3px solid var(--color-accent);outline-offset:5px}
-@media(hover:hover){.work-frame:hover{rotate:0deg;translate:0 -6px}.frame-arrows button:hover{background-color:var(--color-enamel)}}
+@media(hover:hover){.work-frame:hover{opacity:.85;translate:none}.frame-arrows button:hover{background-color:var(--color-enamel)}}
 @media(max-width:900px){.frame-photo{height:180px}.work-frame{flex-basis:260px}}
 @media(max-width:650px){.frame-gallery{margin-top:32px}.frame-gallery-heading{align-items:center}.frame-gallery-heading h3{font-size:22px}.frame-arrows{gap:8px}.frame-track{gap:18px;padding-inline:8px}.work-frame{flex-basis:230px}.frame-photo{height:170px}.control-shadow{left:-4px;width:36px;height:26px}.stick-pedestal{left:-3px;top:5px;width:36px;height:13px}.cabinet-buttons i::before{top:8px;height:13px}.footer-socials{font-size:14px;gap:8px 20px}}
 @media(max-width:650px){.arcade-stage[data-world="0"] .arcade-title{font-size:clamp(28px,9.8vw,64px)}}
@@ -188,3 +188,61 @@ button:disabled{opacity:.5;cursor:not-allowed;filter:saturate(.4)}
 @media(max-width:650px){.arcade-controls .arcade-levels button{font-size:14px}.arcade-controls .arcade-levels button span{font-size:11px}.arcade-scene-meta{font-size:11px}}
 @media(min-width:1000px){.footer-bottom{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr)}.footer-socials{justify-self:center}.footer-bottom>a{justify-self:end}}
 @media(max-width:999px){.footer-bottom{flex-wrap:wrap}}
+
+/* Restrained arcade UI: physical cabinet, quiet content, deliberate interaction. */
+html,body{overflow-x:clip}
+.arcade-light,.motion-backdrop::after{display:none!important}
+.arcade-object::before,.cartridge-art::before,.work.section::before,.archive.section::before{display:none}
+.arcade-object:is(.is-hovered,:hover,:focus-visible)>.object-sprite{filter:drop-shadow(2px 3px 0 var(--color-shadow))}
+.arcade-stage[data-background="graphic"] .motion-backdrop{background:var(--color-paper)}
+.work,.archive,.about,footer{background-image:none!important}
+.section-title h2 span,.about-copy h2 span,footer h2 i{font:inherit;font-style:normal}
+.about-copy h2,.about-paper h2,footer h2{font-family:var(--font-pixel);font-style:normal;letter-spacing:-.025em}
+.about-paper h2 em,.arcade-player-note h2 em{font:inherit;font-style:normal}
+.work-orbit,.section-mascot,.skin-projection{animation:none!important;filter:none}
+.work-orbit{opacity:.85}
+.section-title .handwritten{display:none}
+.section-title{align-items:end;gap:var(--space-lg)}
+.section-note{max-width:32ch;font-size:var(--text-body)}
+.sample-note{margin-top:var(--space-md)}
+.frame-track{padding:24px 0;gap:var(--space-lg)}
+.frame-caption{padding-top:var(--space-sm)}
+.project{padding-block:var(--space-xl);margin-top:var(--space-lg);gap:var(--space-xl)}
+.project-stage .cover-label{display:none}
+.project-editorial .tags{justify-content:flex-start;max-width:none;margin-block:var(--space-md)}
+.project-editorial .tags span,.skill-labels span{clip-path:none;box-shadow:none;background-image:none}
+.project-editorial>p:not(.project-index){line-height:1.65}
+.folders .folder-icon::before{display:none}
+.folders b,.folders button>span:last-child{margin:0}
+.folders button:last-child{border-bottom:1px solid var(--color-rule-soft)}
+.about-star,.tape{display:none}
+.skill-labels{gap:10px 20px}
+.skill-labels span{border-radius:0}
+.pill,.hello,.frame-arrows button,.modal-tabs button,.dialog-close{box-shadow:none!important;background-image:none!important}
+.pill.yellow{background-color:var(--color-accent)}
+.pill{border-radius:0;clip-path:none}
+.frame-arrows button{background:none;border:1px solid var(--color-rule-soft)}
+.motion-toggle,.arcade-header .hello{background:none;border:0;clip-path:none;box-shadow:none}
+.arcade-controls .arcade-levels{box-shadow:none!important;background-image:none}
+.arcade-levels button[aria-current="step"]{background-image:none!important;background-color:var(--color-accent);box-shadow:none}
+.showcase-bar{background-image:none}
+.scene-design-board{background:var(--color-paper-2);box-shadow:none}
+.scene-build-board,.scene-archive-board{box-shadow:none}
+.archive-study img{object-fit:contain;background:var(--color-paper-2)}
+.cartridge.is-hovered>.cartridge-face{box-shadow:inset 2px 2px var(--color-highlight),inset -4px -4px color-mix(in srgb,var(--color-dark) 24%,transparent)}
+.archive-list{gap:0}
+.archive-list>:is(button,a){background:none;border:0;border-top:1px solid var(--color-rule-soft);border-radius:0;clip-path:none;box-shadow:none;color:var(--color-ink);padding:20px 0;grid-template-columns:32px minmax(0,1fr) 24px;gap:16px}
+.archive-list>:is(button,a):is(:hover,:focus-visible){background:var(--color-paper-2);border-color:var(--color-rule);outline-color:var(--color-focus)}
+.archive-row-index{background:none;border:0;clip-path:none;color:var(--color-accent);font:700 20px var(--font-pixel)}
+.archive-row-arrow{color:var(--color-accent)}
+.archive-row-copy small{color:var(--color-ink-2)}
+.asset-panel{border:0;clip-path:none;padding-inline:0;background:none}
+.dialog-close{clip-path:none;border:1px solid var(--color-rule-soft);background:var(--color-paper-2)}
+.dialog-header .mono{color:var(--color-ink-2)}
+.contact-links{display:grid;justify-items:start;gap:var(--space-sm)}
+.contact-links .pill{background:none;border:0;border-bottom:1px solid var(--color-rule);clip-path:none;padding:12px 0;color:var(--color-ink)}
+.contact-links .pill::before,.contact-links .pill::after{display:none}
+.contact-mascot{filter:none}
+.has-motion .motion-enter{transform:none;transition:opacity var(--dur-panel)}
+@media(max-width:900px){.project{gap:var(--space-lg)}.folders{gap:0}.folders button{padding:20px 0}}
+@media(max-width:650px){.folders{gap:0}.folders button{grid-template-columns:40px minmax(0,1fr);gap:8px 16px;padding:20px 0}.folders button>span:last-child{grid-column:2}.folders b{font-size:17px}.folders button>span:last-child{font-size:13px}.work-orbit{opacity:.55}.section-title{display:block}.section-note{margin-top:20px}.project-stage{padding:0}.about-paper h2{font-size:30px}.frame-gallery-heading{align-items:end}.footer-socials a{white-space:nowrap}}
