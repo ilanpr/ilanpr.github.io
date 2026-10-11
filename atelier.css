@@ -242,6 +242,7 @@ html,body{overflow-x:clip}
 .contact-links{display:grid;justify-items:start;gap:var(--space-sm)}
 .contact-links .pill{background:none;border:0;border-bottom:1px solid var(--color-rule);clip-path:none;padding:12px 0;color:var(--color-ink)}
 .contact-links .pill::before,.contact-links .pill::after{display:none}
+.footer-socials{position:static;inset:auto;margin:0;width:auto;justify-content:flex-start}
 .contact-mascot{filter:none}
 .has-motion .motion-enter{transform:none;transition:opacity var(--dur-panel)}
 @media(max-width:900px){.project{gap:var(--space-lg)}.folders{gap:0}.folders button{padding:20px 0}}
