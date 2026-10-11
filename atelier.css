@@ -1,0 +1,130 @@
+/* Hallmark · macrostructure: arcade journey + alternating project folio · tone: tactile playful · anchor hue: warm plum
+ * Pre-emit critique: P4 H4 E4 S5 R4 V4. User reference: printed cabinet, physical shadows and glass.
+ * Existing arcade geometry, original work and pixel characters remain the design anchors. */
+:root{--arcade-yellow:var(--color-accent);--arcade-white:var(--color-ink);--arcade-muted:var(--color-ink-2);--arcade-black:var(--color-paper);--display:var(--font-display);--body:var(--font-body);--content-paper:var(--color-paper);--content-rule:var(--color-rule-soft);--content-light:var(--color-ink);--pixel-texture:url('assets/arcade-print.svg')}
+body{background:var(--color-paper);color:var(--color-ink)}
+h1,h2,h3{min-width:0;overflow-wrap:anywhere}
+.arcade-header{background:var(--color-paper);border-bottom:1px solid var(--color-rule-soft);box-shadow:0 8px 24px var(--color-shadow)}
+.arcade-header nav a{padding-block:var(--space-sm);text-underline-offset:7px;transition:color var(--dur-fast)}
+.arcade-header nav a:hover{color:var(--color-accent)}
+.motion-toggle,.arcade-header .hello{background-color:var(--color-paper-2);border-color:var(--color-rule-soft);box-shadow:inset 0 1px var(--color-highlight);white-space:nowrap}
+.arcade-header .hello{color:var(--color-accent)}
+.arcade-stage[data-background="graphic"] .motion-backdrop::before{background-image:url('assets/arcade-atelier-background.webp');opacity:.88;filter:none}
+.arcade-stage[data-background="graphic"] .motion-backdrop::after{background:var(--arcade-bokeh);opacity:.65}
+.pixel-particles{opacity:.45}
+
+/* Enamel, edge trim, smoked glass and weighted controls. No text in the material layers. */
+.arcade-cabinet{filter:drop-shadow(0 10px 1px var(--color-shadow-deep)) drop-shadow(0 28px 24px var(--color-shadow))}
+.arcade-cabinet::before{background:linear-gradient(180deg,transparent 75%,var(--color-shadow-deep)),linear-gradient(112deg,var(--color-cream),var(--color-enamel-light) 10%,var(--color-enamel-deep) 28%,var(--color-enamel-deep) 72%,var(--color-cyan) 94%,var(--color-cream))}
+.arcade-cabinet::after{background:url('assets/cabinet-grain.svg'),linear-gradient(100deg,var(--color-enamel),var(--color-enamel-deep) 23%,var(--color-paper-2) 73%,var(--color-enamel))}
+.cabinet-marquee::before{background:linear-gradient(100deg,var(--color-cream),var(--color-enamel-light) 55%,var(--color-cyan))}
+.cabinet-marquee::after{background-image:var(--pixel-texture),url('assets/cabinet-grain.svg'),linear-gradient(115deg,var(--color-enamel),var(--color-enamel-deep) 60%,var(--color-paper-3));box-shadow:inset 0 5px 8px var(--color-shadow),inset 0 -1px var(--color-highlight)}
+.cabinet-marquee-rule{left:8%;right:8%;bottom:20%;height:3px;background:linear-gradient(90deg,transparent,var(--color-rose) 12%,var(--color-cream) 48%,var(--color-cyan) 88%,transparent);box-shadow:0 3px 0 var(--color-shadow)}
+.cabinet-lamps i{background:var(--color-ink);box-shadow:0 0 5px 2px var(--color-rose-light),0 0 23px 8px color-mix(in srgb,var(--color-rose) 65%,transparent)}
+.cabinet-screen{border-color:var(--color-paper-2);background-color:var(--color-screen);box-shadow:0 0 0 2px var(--color-enamel-light),0 0 0 4px var(--color-enamel-deep),0 0 0 5px var(--color-cream),0 5px 0 7px var(--color-shadow),inset 0 0 28px var(--color-shadow-deep)}
+.cabinet-screen::after{background:linear-gradient(117deg,transparent 18%,var(--color-highlight) 18.5%,transparent 29%,transparent 72%,var(--color-highlight) 72.5%,transparent 77%);opacity:.48;box-shadow:inset 0 0 28px var(--color-shadow-deep)}
+.crt-grid{opacity:.6}.crt-stars{opacity:.28}.crt-pixels{opacity:.48}
+.cabinet-deck::before{background:var(--pixel-texture),url('assets/cabinet-grain.svg'),linear-gradient(180deg,var(--color-enamel-light),var(--color-enamel) 34%,var(--color-enamel-deep));border-top-color:var(--color-cream);border-bottom-color:var(--color-paper);box-shadow:inset 0 2px var(--color-highlight),inset 0 -4px var(--color-enamel-light)}
+.cabinet-control-group{filter:drop-shadow(7px 9px 2px var(--color-shadow))}
+.cabinet-control-group .cabinet-stick{border-color:var(--color-enamel-light);box-shadow:0 3px 0 var(--color-shadow-deep),inset 0 1px var(--color-highlight)}
+.cabinet-stick::after{background:radial-gradient(circle at 30% 24%,var(--color-cream),var(--color-rose-light) 13%,var(--color-rose) 44%,var(--color-enamel) 83%);box-shadow:inset -3px -4px color-mix(in srgb,var(--color-shadow) 55%,transparent)}
+.cabinet-base{background:url('assets/cabinet-grain.svg'),linear-gradient(var(--color-paper),var(--color-shadow-deep) 45%);border-top-color:var(--color-enamel-light)}
+.arcade-stage[data-world="0"] .arcade-title{padding-bottom:6px}
+.arcade-stage[data-world="0"] .arcade-subtitle{color:var(--color-cyan)!important;text-shadow:0 2px 2px var(--color-shadow-deep)}
+.arcade-start{border-color:var(--color-cream)!important;white-space:nowrap;box-shadow:0 3px 0 var(--color-accent-deep),0 7px 0 var(--color-shadow-deep),0 0 30px color-mix(in srgb,var(--color-accent) 42%,transparent)!important}
+.arcade-start:active{translate:0 2px}
+.object-sprite,.cartridge-art img{filter:drop-shadow(3px 5px 0 var(--color-shadow)) drop-shadow(0 0 14px var(--object-glow,var(--card-halo)))}
+.arcade-stage:not([data-world="0"]) .arcade-title{line-height:1.13;padding-bottom:3px}
+
+/* Project selection is a small collection of printed game boxes. */
+.scene-design-board,.scene-build-board,.scene-archive-board{background-color:color-mix(in srgb,var(--color-paper) 88%,transparent);border-color:var(--color-rule);box-shadow:var(--shadow-panel)}
+.showcase-bar{background-color:var(--color-paper-3);border-bottom-color:var(--color-rule);color:var(--color-cream);letter-spacing:.06em}
+.cartridge.design{--card-top:#e9ddf3;--card-bottom:#b69bcb;--card-rim:var(--color-lilac);--card-halo:#a78bd377}
+.cartridge.interface{--card-top:#e4edf0;--card-bottom:#a5bdcc;--card-rim:var(--color-cyan);--card-halo:#88cad977}
+.cartridge.motion{--card-top:#f1d5df;--card-bottom:#d79db5;--card-rim:var(--color-rose-light);--card-halo:#d888b577}
+.cartridge.engineering{--card-top:#ffe9a0;--card-bottom:#dfbd5b;--card-rim:var(--color-accent);--card-halo:#ebc26177}
+.cartridge{filter:drop-shadow(3px 7px 0 var(--color-shadow-deep)) drop-shadow(0 12px 16px var(--color-shadow)) drop-shadow(0 0 16px var(--card-halo))}
+.cartridge:is(.is-hovered,:focus-visible){filter:drop-shadow(4px 9px 0 var(--color-shadow-deep)) drop-shadow(0 0 25px var(--card-halo))}
+.cartridge>.cartridge-face{box-shadow:inset 2px 2px color-mix(in srgb,var(--color-ink) 70%,transparent),inset -4px -4px color-mix(in srgb,var(--color-dark) 24%,transparent)}
+.cartridge h3{line-height:1.12;overflow-wrap:normal}
+.arcade-levels{background-color:var(--color-paper-2);border-color:var(--color-rule);box-shadow:var(--shadow-raised)!important}
+.arcade-levels button{transition:background-color var(--dur-fast),color var(--dur-fast),box-shadow var(--dur-fast)}
+.arcade-levels button[aria-current="step"]{box-shadow:inset 0 2px var(--color-cream),inset 0 -4px var(--color-accent-deep)}
+.arcade-levels button:active{box-shadow:inset 0 3px var(--color-shadow)}
+
+/* Catalogue: larger breathing room and alternating editorial rhythm. */
+.ticker{background:var(--color-accent);padding-block:var(--space-sm);border-block:3px solid var(--color-dark);box-shadow:0 5px 0 var(--color-enamel)}
+.ticker>div{font-family:var(--font-pixel);letter-spacing:.08em;animation-duration:38s}
+.section-title h2,.about-copy h2,.about-paper h2,footer h2{line-height:1.14;padding-bottom:.06em}
+.section-title h2{font-size:var(--text-title)}
+.section-title .eyebrow,.about-copy>.eyebrow{display:block;color:var(--color-cream);font-size:var(--text-xs);letter-spacing:.11em;margin-bottom:var(--space-md)}
+.work.section,.archive.section{padding-block:var(--space-2xl)}
+.section-note,.section-title>p,.sample-note{color:var(--color-ink-2);line-height:1.7}
+.sample-note{font-size:var(--text-sm)}
+.project{gap:7%;margin-top:var(--space-2xl);padding-bottom:var(--space-2xl);border-color:var(--color-rule-soft)}
+.project-visual{clip-path:none!important;border:1px solid var(--color-rule);box-shadow:5px 7px 0 var(--color-paper-3),var(--shadow-panel);overflow:visible;transition:box-shadow var(--dur-panel),border-color var(--dur-fast)}
+.project-stage{background:var(--color-paper-2)!important;padding:var(--space-md);box-shadow:inset 0 2px var(--color-highlight)}
+.project-stage .cover-label{color:var(--color-cream);letter-spacing:.1em;font-size:var(--text-xs);margin-bottom:var(--space-md)!important}
+.work-cover{background:var(--color-paper);max-height:490px}
+.project-editorial>h3{font-size:clamp(28px,3vw,42px);line-height:1.15;letter-spacing:-.035em}
+.project-editorial>p:not(.project-index){font-size:var(--text-body);font-weight:500;line-height:1.8;max-width:42ch;color:var(--color-ink-2)}
+.project-index{color:var(--color-cream);letter-spacing:.045em}
+.project-editorial .tags span,.skill-labels span{border:1px solid var(--color-rule-soft);background-color:var(--color-paper-2);color:var(--color-ink-2);padding:6px 10px;line-height:1.5}
+.editorial-open{white-space:nowrap;color:var(--color-accent);padding-inline:var(--space-sm);background-color:var(--color-paper-2);border:1px solid var(--color-rule);box-shadow:3px 3px 0 var(--color-shadow-deep)}
+.editorial-open:active{translate:1px 1px}
+.about{padding-block:var(--space-2xl);background-color:var(--color-paper-2);border-block:1px solid var(--color-rule-soft)}
+.about-paper{background-color:var(--color-cream);color:var(--color-dark);box-shadow:6px 8px 0 var(--color-enamel),0 24px 40px var(--color-shadow);transform:rotate(-3deg);padding:var(--space-lg)}
+.about-paper h2{font-size:clamp(28px,3vw,40px)}
+.about-paper em{color:var(--color-enamel)}
+.about-paper .handwritten{font-family:var(--font-pixel);font-size:22px;font-weight:500}
+.about-copy>p{line-height:1.85;color:var(--color-ink-2)}
+.about-copy h2{font-size:clamp(32px,4vw,52px)}
+.folders{gap:var(--space-lg)}
+.folders button{padding:var(--space-md);background-color:var(--color-paper-2);border:1px solid var(--color-rule-soft);box-shadow:var(--shadow-raised);min-width:0}
+.folders .folder-icon{margin:0 0 var(--space-md);height:76px;font-family:var(--font-pixel);font-size:44px;box-shadow:inset 2px 2px var(--color-highlight),inset -3px -3px color-mix(in srgb,var(--color-dark) 20%,transparent)}
+.folders b{line-height:1.35;font-size:18px;margin-top:var(--space-md)}
+.folders button>span:last-child{line-height:1.7;font-size:var(--text-sm);color:var(--color-ink-2)}
+footer{padding-top:var(--space-2xl);background-color:var(--color-paper-2);border-top:1px solid var(--color-rule-soft)}
+footer h2{font-size:clamp(40px,6.5vw,88px);letter-spacing:-.04em}
+footer .pill.yellow{box-shadow:4px 5px 0 var(--color-accent-deep),0 14px 22px var(--color-shadow);padding:18px 24px;white-space:nowrap}
+.footer-bottom{line-height:1.6;align-items:center;gap:var(--space-md)}
+
+/* Readable dialogs and a short, physical entrance. */
+dialog{border-color:var(--color-rule);box-shadow:0 0 0 5px var(--color-paper-3),0 35px 90px var(--color-shadow-deep)}
+dialog::backdrop{background:color-mix(in srgb,var(--color-paper) 78%,transparent);backdrop-filter:blur(8px)}
+dialog[open]{animation:atelier-dialog var(--dur-panel) var(--ease-out) both}
+.dialog-header{padding-right:76px;background-color:var(--color-paper-2)}
+.dialog-header h2{line-height:1.15;max-width:100%;font-size:clamp(28px,4vw,48px)}
+.dialog-content{line-height:1.75}.asset-panel{background-color:var(--color-paper-2)}
+.modal-tabs button{white-space:nowrap;box-shadow:inset 0 1px var(--color-highlight)}
+.dialog-close{box-shadow:3px 3px 0 var(--color-shadow-deep)}
+.archive-row-copy b,.archive-row-copy small{overflow-wrap:anywhere;line-height:1.5}
+.arcade-preview-layer .preview-notes p,.arcade-preview-layer .preview-toolkit p{display:block;-webkit-line-clamp:unset;overflow:visible}
+.arcade-preview-layer .preview-content:is(.notes,.toolkit){overflow:auto;scrollbar-width:thin}
+.has-motion .project.reveal .project-visual,.has-motion .project.reveal .project-editorial{opacity:0;translate:0 20px;clip-path:none;transition:opacity var(--dur-enter) var(--ease-out),translate var(--dur-enter) var(--ease-out)}
+.has-motion .project.reveal .project-editorial{transition-delay:90ms}
+.has-motion .project.reveal.visible .project-visual,.has-motion .project.reveal.visible .project-editorial{opacity:1;translate:none}
+@keyframes atelier-dialog{from{opacity:0;transform:translateY(12px) scale(.985)}to{opacity:1;transform:none}}
+@media(hover:hover){.project-visual:hover{border-color:var(--color-cream);box-shadow:7px 9px 0 var(--color-paper-3),0 22px 42px var(--color-shadow)}.folders button:hover{border-color:var(--color-cream)}.editorial-open:hover{color:var(--color-ink);background-color:var(--color-paper-3)}}
+@media(min-width:901px){.project:nth-child(even){grid-template-columns:minmax(0,1fr) minmax(0,1.6fr)}.project:nth-child(even) .project-visual{order:2}.project:nth-child(even) .project-editorial{order:1}.work-orbit{left:49%;width:clamp(210px,23vw,330px)}}
+@media(max-width:900px){.folders{gap:var(--space-md)}.folders button{padding:var(--space-sm)}.about-paper{padding:var(--space-md)}}
+@media(max-width:650px){
+ .arcade-stage[data-background="graphic"] .motion-backdrop::before{opacity:.8;background-size:auto 100%}
+ .arcade-header{padding-inline:4%;gap:8px}.arcade-header .hello{font-size:9px}
+ .arcade-stage[data-world="0"] .arcade-subtitle{font-size:clamp(15px,4.5vw,24px)}
+ .arcade-stage:not([data-world="0"]) .arcade-title{line-height:1.12}
+ .cartridge h3{font-size:16px;line-height:1.12}.cartridge .mono{line-height:1.4}
+ .section-title h2{font-size:clamp(35px,9.5vw,46px)}
+ .work.section,.archive.section,.about{padding-block:56px}
+ .project{margin-top:var(--space-xl);padding-bottom:var(--space-xl)}
+ .project-stage{padding:var(--space-sm)}.project-editorial>h3{font-size:30px}
+ .project-editorial>p:not(.project-index){font-size:14px}
+ .about-paper{transform:rotate(-2deg)}.about-paper h2{font-size:clamp(25px,7.5vw,38px)}
+ .folders{gap:var(--space-sm)}.folders b{font-size:15px}.folders button>span:last-child{font-size:12px}
+ .folders .folder-icon{height:62px;font-size:36px}
+ .dialog-header{padding:52px 22px 24px}.dialog-content{padding:var(--space-md)}
+ .footer-bottom{align-items:flex-start;flex-direction:column}.footer-bottom a{padding-block:var(--space-xs)}
+ footer h2{max-width:100%;font-size:clamp(38px,10vw,62px)}
+}
+.paused .project.reveal :is(.project-visual,.project-editorial){opacity:1!important;translate:none!important;transition:none!important}
+@media(prefers-reduced-motion:reduce){.has-motion .project.reveal :is(.project-visual,.project-editorial){opacity:1;translate:none;transition:none}dialog[open]{animation:none}}
