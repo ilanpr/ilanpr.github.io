@@ -13,10 +13,17 @@ const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)');
 const escapeText=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 function safeSrc(src){if(!src)return null;try{const u=new URL(src,location.href);return u.protocol==='https:'||(u.origin===location.origin&&u.protocol===location.protocol)?escapeText(u.href):null;}catch{return null;}}
 function projectCover(p){return `<img class="work-cover" src="${safeSrc(p.assets.Image.src)}" alt="${escapeText(p.assets.Image.alt)}" loading="lazy">`;}
-document.querySelector('#project-list').innerHTML=projects.map((p,i)=>`<article class="project reveal" id="${p.id}"><button class="project-visual" data-project="${p.id}" aria-label="View ${escapeText(p.name)}"><div class="project-stage ${p.kind}"><p class="cover-label">SELECTED WORK / 0${i+1}</p>${projectCover(p)}</div></button><div class="project-editorial"><p class="project-index mono">0${i+1} / ${p.category}</p><h3>${p.name}</h3><p>${p.summary}</p><div class="tags">${p.tags.map(t=>`<span>${t}</span>`).join('')}</div><button class="editorial-open" data-project="${p.id}">View project <span aria-hidden="true">↗</span></button></div></article>`).join('');
+document.querySelector('#project-list').innerHTML=projects.map((p,i)=>`<article class="project reveal" id="${p.id}" aria-label="${escapeText(p.name)} project"><button class="project-visual" data-project="${p.id}" aria-label="View ${escapeText(p.name)}"><div class="project-stage ${p.kind}"><p class="cover-label">SELECTED WORK / 0${i+1}</p>${projectCover(p)}</div></button><div class="project-editorial"><h3>${p.name}</h3><p class="project-index">${p.category}</p><p>${p.summary}</p><div class="tags">${p.tags.map(t=>`<span>${t}</span>`).join('')}</div><button class="editorial-open" data-project="${p.id}">View project <span aria-hidden="true">↗</span></button></div></article>`).join('');
 const framedWork=projects.flatMap(p=>(p.assets.Image.items||[p.assets.Image]).slice(0,p.kind==='design'?3:1).map((image,index)=>({p,image,index})));
-document.querySelector('.frame-track').innerHTML=framedWork.map(({p,image,index},i)=>`<button class="work-frame" data-project="${p.id}" data-start-tab="Image" data-image-index="${index}" aria-label="Explore ${escapeText(image.title||p.name)}"><span class="frame-photo"><img src="${safeSrc(image.thumb||image.src)}" alt="${escapeText(image.alt||p.name)}" loading="lazy" width="480" height="320"></span><span class="frame-caption"><small>FRAME / 0${i+1}</small><b>${escapeText(image.title||p.name)}</b><span aria-hidden="true">↗</span></span></button>`).join('');
-document.querySelectorAll('[data-frame-step]').forEach(button=>button.addEventListener('click',()=>{const track=document.querySelector('.frame-track');track.scrollBy({left:Number(button.dataset.frameStep)*track.clientWidth*.8,behavior:reduceMotion.matches||document.body.classList.contains('paused')?'instant':'smooth'});}));
+document.querySelector('.frame-track').innerHTML=framedWork.map(({p,image,index},i)=>`<button class="work-frame" data-project="${p.id}" data-start-tab="Image" data-image-index="${index}" aria-label="Explore ${escapeText(image.title||p.name)}"><span class="frame-photo"><img src="${safeSrc(image.thumb||image.src)}" alt="${escapeText(image.alt||p.name)}" loading="lazy" width="480" height="320"></span><span class="frame-caption"><b>${escapeText(image.title||p.name)}</b><span aria-hidden="true">↗</span></span></button>`).join('');
+document.querySelectorAll('[data-frame-step]').forEach(button=>button.addEventListener('click',()=>{
+ const track=document.querySelector('.frame-track'),gallery=document.querySelector('.frame-gallery');
+ const still=reduceMotion.matches||document.body.classList.contains('paused'),direction=Number(button.dataset.frameStep);
+ if(innerWidth>=1000&&!still){
+  const rect=gallery.getBoundingClientRect(),travel=Math.max(1,rect.height-gallery.querySelector('.frame-wall').offsetHeight);
+  window.scrollTo({top:window.scrollY+rect.top-24+(direction>0?travel:0),behavior:'smooth'});
+ }else track.scrollBy({left:direction*track.clientWidth*.8,behavior:still?'instant':'smooth'});
+}));
 function pauseDialogMedia(){dialogBody.querySelectorAll('video').forEach(video=>video.pause());}
 function showDialog(){document.querySelectorAll('video').forEach(video=>video.pause());if(!dialog.open)dialog.showModal();document.body.classList.add('modal-open');}
 function openProject(id,startTab='Overview',imageIndex=0){
@@ -69,6 +76,31 @@ if(workOrbit){
  new IntersectionObserver(([entry])=>{orbitVisible=entry.isIntersecting;syncOrbit();}).observe(workOrbit);
  document.addEventListener('visibilitychange',syncOrbit);
 }
-let scheduled=false;function updateScroll(){scheduled=false;const max=document.documentElement.scrollHeight-innerHeight;document.querySelector('.progress').style.width=(max>0?scrollY/max*100:0)+'%';}
+// The wall is assembled by the visitor's ordinary vertical scroll, never by a timer.
+const pictureWall=document.querySelector('.frame-gallery');
+const pictureFrames=[...pictureWall.querySelectorAll('.work-frame')];
+const frameDepth=[[-18,-24,-4,10],[0,28,3,-8],[18,-20,4,-10],[-14,20,3,8],[0,-18,-3,-6],[16,24,-4,-8]];
+let wallVisible=false,scheduled=false;
+function paintPictureWall(){
+ const still=reduceMotion.matches||document.body.classList.contains('paused')||innerWidth<1000;
+ pictureWall.classList.toggle('wall-static',still);
+ if(!wallVisible&&!still)return;
+ const rect=pictureWall.getBoundingClientRect(),stage=pictureWall.querySelector('.frame-wall');
+ const travel=Math.max(1,rect.height-stage.offsetHeight);
+ const progress=Math.max(0,Math.min(1,(24-rect.top)/travel));
+ pictureFrames.forEach((frame,index)=>{
+  const phase=still?1:Math.max(0,Math.min(1,(progress-index*.035)/(.8-index*.035)));
+  const depth=Math.pow(1-phase,3),pose=frameDepth[index];
+  frame.style.setProperty('--frame-x',(pose[0]*depth)+'px');
+  frame.style.setProperty('--frame-y',(pose[1]*depth)+'px');
+  frame.style.setProperty('--frame-roll',(pose[2]*depth)+'deg');
+  frame.style.setProperty('--frame-yaw',(pose[3]*depth)+'deg');
+ });
+}
+new IntersectionObserver(([entry])=>{wallVisible=entry.isIntersecting;if(wallVisible)updateScroll();},{rootMargin:'200px'}).observe(pictureWall);
+function updateScroll(){scheduled=false;const max=document.documentElement.scrollHeight-innerHeight;document.querySelector('.progress').style.width=(max>0?scrollY/max*100:0)+'%';paintPictureWall();}
+addEventListener('resize',()=>{if(!scheduled){scheduled=true;requestAnimationFrame(updateScroll);}});
+reduceMotion.addEventListener('change',updateScroll);
+motionButton.addEventListener('click',updateScroll);
 addEventListener('scroll',()=>{if(!scheduled){scheduled=true;requestAnimationFrame(updateScroll);}},{passive:true});updateScroll();document.addEventListener('visibilitychange',()=>document.querySelectorAll('.ticker>div,.motion-demo span,.cartridge-art img,.pixel-particle').forEach(el=>el.style.animationPlayState=document.hidden?'paused':''));
 

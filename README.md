@@ -2,6 +2,8 @@
 
 An arcade-inspired portfolio of visual design, motion projects, and software.
 
+The latest direction adapts spatial image storytelling from [JJettas](https://jjettas.com/) and game-panel design from [Play Arcade](https://www.behance.net/gallery/229512455/Play-Arcade). The picture wall assembles through native vertical scrolling on desktop; phones use a contained image rail, and Pause motion or reduced motion presents a static composition. Project categories follow the titles and the About section uses the existing portrait. No new animation dependency or reference artwork was added.
+
 ## Edit
 
 - `index.html`: introduction, About, arcade markup and links.

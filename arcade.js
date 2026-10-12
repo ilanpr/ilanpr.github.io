@@ -339,7 +339,7 @@ function initArcade(scope,scroller) {
   headline.style.translate=`0 ${titleShift}px`;headline.style.scale=next===0?String(.9+.1*coverWeight):'1';
   const profileWeight=sceneWeight(scene,4);profile.style.opacity=next===4?profileWeight*sceneOpacity:0;profile.inert=profileWeight<.85;profile.style.translate=`0 ${(1-profileWeight)*70}px`;
   skinSelector.style.display=profileWeight>0?'grid':'none';skinSelector.style.opacity=next===4?profileWeight*sceneOpacity:0;skinSelector.style.translate=`0 ${(1-profileWeight)*70}px`;skinSelector.inert=next!==4||profileWeight<.85||sceneOpacity<.6;
-  for(const [board,level] of [[designBoard,1],[buildBoard,2],[archiveBoard,3]]){const weight=sceneWeight(scene,level);board.style.display=weight>0?(level===3?'grid':'block'):'none';board.style.opacity=weight;board.style.scale=String(.93+.07*weight);board.style.translate=`0 ${(1-weight)*65}px`;board.inert=weight<.85;}
+  for(const [board,level] of [[designBoard,1],[buildBoard,2],[archiveBoard,3]]){const weight=sceneWeight(scene,level);board.style.display=weight>0?(level===3?'grid':'block'):'none';board.style.opacity=weight;board.style.scale=String(.93+.07*weight);board.style.translate=`0 ${(1-weight)*65}px`;board.style.transform=!still&&level===1?`perspective(1400px) rotateX(${(1-weight)*8}deg)`:'none';board.inert=weight<.85;}
   if(chapter!==next){
    closePreview();
    chapter=next;stage.dataset.world=String(next);
